@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <TabPane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab text="Bestellung">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label layoutX="15.0" layoutY="23.0" text="Kategorie:" />
+                <ComboBox layoutX="76.0" layoutY="24.0" prefHeight="21.0" prefWidth="174.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="T-Shirts" />
+                      <String fx:value="Pullover" />
+                      <String fx:value="Sonstiges" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <RadioButton layoutX="342.0" layoutY="29.0" mnemonicParsing="false" text="Männer" />
+                <RadioButton layoutX="342.0" layoutY="55.0" mnemonicParsing="false" text="Frauen" />
+                <RadioButton layoutX="342.0" layoutY="78.0" mnemonicParsing="false" text="Kinder" />
+                <ScrollBar layoutX="238.0" layoutY="86.0" orientation="VERTICAL" prefHeight="222.0" />
+                <TextArea layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0" wrapText="true" />
+                <TextField layoutX="446.0" layoutY="286.0" prefWidth="40.0" />
+                <Label layoutX="356.0" layoutY="286.0" prefHeight="19.0001220703125" text="Bestellnummer:" />
+                <Button layoutX="317.0" layoutY="322.0" mnemonicParsing="false" text="Zum Warenkorb hinzufügen" />
+                <Label layoutX="14.0" layoutY="63.0" text="Produkte:" />
+                <ComboBox layoutX="342.0" layoutY="127.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="XL" />
+                      <String fx:value="L" />
+                      <String fx:value="M" />
+                      <String fx:value="S" />
+                      <String fx:value="XS" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Label layoutX="300.0" layoutY="130.0" text="Größe:" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Sonderangebote">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+        <Tab text="Warenkorb">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label layoutX="14.0" layoutY="34.0" text="Bestellliste:" />
+                <TextArea layoutX="14.0" layoutY="50.0" prefHeight="268.0" prefWidth="200.0" wrapText="true" />
+                <ScrollBar layoutX="214.0" layoutY="50.0" orientation="VERTICAL" prefHeight="268.0" />
+                <Button layoutX="170.0" layoutY="318.0" mnemonicParsing="false" text="Kaufen" />
+                <Label layoutX="16.0" layoutY="318.0" text="Preis: 20€" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Account">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</AnchorPane>
