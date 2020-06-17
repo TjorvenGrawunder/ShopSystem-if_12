@@ -12,14 +12,15 @@ import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 	
-	SQLiteJDBCDatabase database = new SQLiteJDBCDatabase("shopsystem");
+	SQLiteJDBCDatabase database = SQLiteJDBCDatabase.getInstance();
 	
 	private Stage primaryStage;
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		
-		
+		database.createLoginTable();
+
 		
 		mainWindow();
 	}
@@ -42,12 +43,14 @@ public class Main extends Application {
 			
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+	
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 }

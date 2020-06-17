@@ -9,6 +9,7 @@ import java.sql.Statement;
 public class SQLiteJDBCDatabase {
 	private final String databaseName;
 	private Connection connection;
+	private static SQLiteJDBCDatabase instance;
 
 	public SQLiteJDBCDatabase(String databaseName) {
 		this.databaseName = databaseName;
@@ -31,12 +32,12 @@ public class SQLiteJDBCDatabase {
 		return connection;
 	}
 
-	public void createLoginTable(String nameTable) {
+	public void createLoginTable() {
 
 		Statement statement = null;
 		try {
 			statement = getConnection().createStatement();
-			String sqlCommand = "CREATE TABLE LOGIN " + "(USERNAME STRING PRIMARY KEY     NOT NULL,"
+			String sqlCommand = "CREATE TABLE IF NOT EXISTS LOGIN " + "(USERNAME STRING PRIMARY KEY     NOT NULL,"
 					+ " PASSWORD STRING    NOT NULL )";
 			statement.executeUpdate(sqlCommand);
 			statement.close();
@@ -44,12 +45,13 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void setLoginData(String username, String password) {
 		Statement statement = null;
 		try {
 			statement = getConnection().createStatement();
-			String sqlUserData = "INSERT INTO LOGIN (USERNAME,PASSWORD) VALUES('" + username+ "', '" + password + "')";
+			String sqlUserData = "INSERT INTO LOGIN (USERNAME,PASSWORD) VALUES('" + username + "', '" + password + "')";
+			statement.execute(sqlUserData);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,6 +64,7 @@ public class SQLiteJDBCDatabase {
 		try {
 			statement = getConnection().createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT PASSWORD FROM LOGIN WHERE USERNAME = '" + user + "'");
+			resultSet.next();
 			password = resultSet.getString("password");
 			resultSet.close();
 			statement.close();
@@ -69,5 +72,16 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 		return password;
+	}
+
+	public static synchronized SQLiteJDBCDatabase getInstance() {
+		if (SQLiteJDBCDatabase.instance == null) {
+			SQLiteJDBCDatabase.instance = new SQLiteJDBCDatabase("ShopSystem");
+		}
+		return SQLiteJDBCDatabase.instance;
+	}
+
+	public String getDatabaseName() {
+		return databaseName;
 	}
 }
