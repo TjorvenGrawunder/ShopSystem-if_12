@@ -12,6 +12,7 @@ public class MainWindowController {
 	@FXML private TextField username;
 	@FXML private TextField password;
 	private String user;
+	private String passw;
 	public Main main;
 	
 	public void setMain(Main main) {
@@ -20,16 +21,20 @@ public class MainWindowController {
 	
 	@FXML
 	public void registerButtonClick(ActionEvent  event) {
-		user = username.getText();
-		String passw = password.getText();
+		setLoginData();
 		sqlDatabase.setLoginData(user, passw);
 	}
 	
 	@FXML
 	public void loginButtonClick(ActionEvent  event) {
+		setLoginData();
 		String loginData = sqlDatabase.getPasswordFromUser(user);
 		System.out.println(loginData);
 	}
 	
+	private void setLoginData() {
+		user = username.getText();
+		String passw = password.getText();
+	}
 
 }
