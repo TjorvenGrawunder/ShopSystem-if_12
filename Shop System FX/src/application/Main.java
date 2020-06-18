@@ -22,10 +22,10 @@ public class Main extends Application {
 		database.createLoginTable();
 
 		
-		mainWindow();
+		loginWindow();
 	}
 	
-	public void mainWindow() {
+	public void loginWindow() {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("LoginWindow.fxml"));
@@ -33,9 +33,9 @@ public class Main extends Application {
 			primaryStage.setMinHeight(400.00);
 			primaryStage.setMinWidth(300.00);
 			
-			MainWindowController mainWindowController = new MainWindowController();
-			loader.setController(mainWindowController);
-			mainWindowController.setMain(this);
+			LoginWindowController loginWindowController = new LoginWindowController();
+			loader.setController(loginWindowController);
+			loginWindowController.setMain(this);
 			
 			Scene scene = new Scene(pane);
 			primaryStage.setScene(scene);
