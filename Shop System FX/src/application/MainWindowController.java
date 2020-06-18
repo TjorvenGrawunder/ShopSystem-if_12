@@ -2,6 +2,7 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class MainWindowController {
@@ -10,7 +11,7 @@ public class MainWindowController {
 
 	//Views
 	@FXML private TextField username;
-	@FXML private TextField password;
+	@FXML private PasswordField password;
 	private String user;
 	private String passw;
 	public Main main;
@@ -34,7 +35,7 @@ public class MainWindowController {
 	
 	private void setLoginData() {
 		user = username.getText();
-		String passw = password.getText();
+		passw = password.getText();
 	}
 
 }
