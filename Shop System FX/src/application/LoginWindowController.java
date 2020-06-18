@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Effect;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
@@ -43,12 +44,11 @@ public class LoginWindowController {
 		if (nextWindow == true) {
 			AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindow.fxml"));
 			loginPane.getChildren().setAll(shopPane);
-		}
-		else {
-			Alert wrongLoginData = new Alert(AlertType.ERROR);
+		} else {
+			Alert wrongLoginData = new Alert(AlertType.WARNING);
 			wrongLoginData.setTitle("Loginfehler");
 			wrongLoginData.setHeaderText(null);
-			String error = "Benutzername oder Passwort ist falsch";
+			String error = "Benutzername oder Passwort ist falsch!";
 			wrongLoginData.setContentText(error);
 			wrongLoginData.showAndWait();
 		}
