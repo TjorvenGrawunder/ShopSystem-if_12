@@ -19,7 +19,8 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//Verbindung zu bestehender Datenbank oder Erstellen einer neuen Datenbank
 	private Connection getConnection() {
 		if (connection == null) {
 
@@ -31,7 +32,8 @@ public class SQLiteJDBCDatabase {
 		}
 		return connection;
 	}
-
+	
+	//Tabellen erstellen
 	public void createLoginTable() {
 
 		Statement statement = null;
@@ -39,6 +41,20 @@ public class SQLiteJDBCDatabase {
 			statement = getConnection().createStatement();
 			String sqlCommand = "CREATE TABLE IF NOT EXISTS LOGIN " + "(USERNAME STRING PRIMARY KEY     NOT NULL,"
 					+ " PASSWORD INT    NOT NULL )";
+			statement.executeUpdate(sqlCommand);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void createProductsTable() {
+
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			String sqlCommand = "CREATE TABLE IF NOT EXISTS PRODUCTS " + "(PRODUCTID INT PRIMARY KEY   NOT NULL AUTO_INCREMENT,"
+					+ " PRODUCT STRING    NOT NULL, PRICE INT NOT NULL )";
 			statement.executeUpdate(sqlCommand);
 			statement.close();
 		} catch (SQLException e) {
