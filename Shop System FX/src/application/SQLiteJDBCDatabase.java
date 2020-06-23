@@ -34,7 +34,7 @@ public class SQLiteJDBCDatabase {
 		return connection;
 	}
 	
-	//Tabellen erstellen
+	//Tabelle zum Speichern der Login-Daten erstellen
 	public void createLoginTable() {
 
 		Statement statement = null;
@@ -48,7 +48,7 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 	}
-	
+	//Tabelle zum Speichern der Produkt-Daten erstellen
 	public void createProductsTable() {
 
 		Statement statement = null;
@@ -65,6 +65,7 @@ public class SQLiteJDBCDatabase {
 	
 	//Daten in Tabellen schreiben
 	
+	//Speichern der Login-Daten im LoginTable
 	public void setLoginData(String username, int passw) {
 		Statement statement = null;
 		try {
@@ -91,6 +92,7 @@ public class SQLiteJDBCDatabase {
 	
 	
 	
+	//Daten aus Tabelle ziehen
 	public int getPasswordFromUser(String user) {
 		int password = 0;
 		Statement statement = null;
