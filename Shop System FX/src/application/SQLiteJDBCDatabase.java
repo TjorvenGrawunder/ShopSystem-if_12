@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class SQLiteJDBCDatabase {
 	private final String databaseName;
@@ -53,15 +54,17 @@ public class SQLiteJDBCDatabase {
 		Statement statement = null;
 		try {
 			statement = getConnection().createStatement();
-			String sqlCommand = "CREATE TABLE IF NOT EXISTS PRODUCTS " + "(PRODUCTID INT PRIMARY KEY   NOT NULL AUTO_INCREMENT,"
-					+ " PRODUCT STRING    NOT NULL, PRICE INT NOT NULL )";
+			String sqlCommand = "CREATE TABLE IF NOT EXISTS PRODUCTS " + "(PRODUCTID INTEGER PRIMARY KEY AUTOINCREMENT,"
+					+ " PRODUCTNAME STRING    NOT NULL, PRICE INT NOT NULL, CATEGORY STRING NOT NULL)";
 			statement.executeUpdate(sqlCommand);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//Daten in Tabellen schreiben
+	
 	public void setLoginData(String username, int passw) {
 		Statement statement = null;
 		try {
@@ -73,7 +76,21 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void addProducts(String productname, int price, String category) {
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			String sqlUserData = "INSERT INTO PRODUCTS (PRODUCTNAME,PRICE,CATEGORY) VALUES('" + productname + "', '" + price + "', '" + category +"')";
+			statement.execute(sqlUserData);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	public int getPasswordFromUser(String user) {
 		int password = 0;
 		Statement statement = null;
@@ -89,6 +106,27 @@ public class SQLiteJDBCDatabase {
 		}
 		return password;
 	}
+	
+	public ArrayList<Integer> getProducts(String category) {
+		ArrayList<Integer> productList = new ArrayList<Integer>();
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT PRODUCTID FROM PRODUCTS WHERE CATEGORY = '" + category + "'");
+			
+			while(resultSet.next()) {
+				productList.add(resultSet.getInt("productid"));
+				
+			}
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return productList;
+	}
+	
 
 	public static synchronized SQLiteJDBCDatabase getInstance() {
 		if (SQLiteJDBCDatabase.instance == null) {

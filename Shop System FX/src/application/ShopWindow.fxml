@@ -25,11 +25,16 @@
                     </FXCollections>
                   </items>
                 </ComboBox>
-                <RadioButton layoutX="342.0" layoutY="29.0" mnemonicParsing="false" text="Männer" />
-                <RadioButton layoutX="342.0" layoutY="55.0" mnemonicParsing="false" text="Frauen" />
-                <RadioButton layoutX="342.0" layoutY="78.0" mnemonicParsing="false" text="Kinder" />
+                <VBox id="ToggleGroup" layoutX="322.0" layoutY="14.0" prefHeight="95.0" prefWidth="100.0" />
+                <RadioButton layoutX="342.0" layoutY="29.0" mnemonicParsing="false" selected="true" text="Männer">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="ToggleGroup" />
+                  </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="342.0" layoutY="55.0" mnemonicParsing="false" selected="false" text="Frauen" toggleGroup="$ToggleGroup" />
+                <RadioButton layoutX="342.0" layoutY="78.0" mnemonicParsing="false" text="Kinder" toggleGroup="$ToggleGroup" />
                 <ScrollBar layoutX="238.0" layoutY="86.0" orientation="VERTICAL" prefHeight="222.0" />
-                <TextArea layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0" wrapText="true" />
+                <TextArea id="ProductTextField" editable="false" layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0" wrapText="true" />
                 <TextField layoutX="446.0" layoutY="286.0" prefWidth="40.0" />
                 <Label layoutX="356.0" layoutY="286.0" prefHeight="19.0001220703125" text="Bestellnummer:" />
                 <Button layoutX="317.0" layoutY="322.0" mnemonicParsing="false" text="Zum Warenkorb hinzufügen" />
