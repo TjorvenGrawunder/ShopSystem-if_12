@@ -30,13 +30,13 @@ public class LoginWindowController {
 	public void setMain(Main main) {
 		this.main = main;
 	}
-
+	//Ausführung des Register-Buttons
 	@FXML
 	public void registerButtonClick(ActionEvent event) {
 		setLoginData();
 		sqlDatabase.setLoginData(user, passw.hashCode());
 	}
-
+	//Ausführung des Login-Buttons
 	@FXML
 	public void loginButtonClick(ActionEvent event) throws IOException {
 		setLoginData();
@@ -53,12 +53,12 @@ public class LoginWindowController {
 			wrongLoginData.showAndWait();
 		}
 	}
-
+	//Speichern der Login-Daten
 	private void setLoginData() {
 		user = username.getText();
 		passw = password.getText();
 	}
-
+	//Prüfen ob Passwort und Username übereinstimmen
 	private boolean checkLoginData(String user, int password) {
 		boolean correctPassword = false;
 		int loginData = sqlDatabase.getPasswordFromUser(user);

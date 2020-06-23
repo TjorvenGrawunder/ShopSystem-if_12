@@ -20,7 +20,6 @@ public class Main extends Application {
 		this.primaryStage = primaryStage;
 		
 		database.createLoginTable();
-
 		
 		loginWindow();
 	}
