@@ -56,7 +56,7 @@ public class LoginWindowController {
 	//Speichern der Login-Daten
 	private void setLoginData() {
 		user = username.getText();
-		passw = password.getText();
+		passw = password.getText() + "7453";
 	}
 	//Prüfen ob Passwort und Username übereinstimmen
 	private boolean checkLoginData(String user, int password) {
