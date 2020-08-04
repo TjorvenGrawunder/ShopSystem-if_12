@@ -2,6 +2,8 @@ package application;
 
 import java.io.IOException;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,9 +43,16 @@ public class LoginWindowController {
 	public void loginButtonClick(ActionEvent event) throws IOException {
 		setLoginData();
 		boolean nextWindow = checkLoginData(user, passw.hashCode());
+		String admin = sqlDatabase.isAdmin(user);
 		if (nextWindow == true) {
-			AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindow.fxml"));
+			if(admin.equals("TRUE")) {
+			AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindow2.fxml"));
 			loginPane.getChildren().setAll(shopPane);
+			}
+			else{
+				AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindow.fxml"));
+				loginPane.getChildren().setAll(shopPane);
+			}
 		} else {
 			Alert wrongLoginData = new Alert(AlertType.WARNING);
 			wrongLoginData.setTitle("Loginfehler");

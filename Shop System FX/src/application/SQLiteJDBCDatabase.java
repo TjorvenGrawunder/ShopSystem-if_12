@@ -41,7 +41,7 @@ public class SQLiteJDBCDatabase {
 		try {
 			statement = getConnection().createStatement();
 			String sqlCommand = "CREATE TABLE IF NOT EXISTS LOGIN " + "(USERNAME STRING PRIMARY KEY     NOT NULL,"
-					+ " PASSWORD INT    NOT NULL )";
+					+ " PASSWORD INT    NOT NULL, ADMIN STRING NOT NULL )";
 			statement.executeUpdate(sqlCommand);
 			statement.close();
 		} catch (SQLException e) {
@@ -70,7 +70,7 @@ public class SQLiteJDBCDatabase {
 		Statement statement = null;
 		try {
 			statement = getConnection().createStatement();
-			String sqlUserData = "INSERT INTO LOGIN (USERNAME,PASSWORD) VALUES('" + username + "', '" + passw + "')";
+			String sqlUserData = "INSERT INTO LOGIN (USERNAME,PASSWORD,ADMIN) VALUES('" + username + "', '" + passw + "','FALSE')";
 			statement.execute(sqlUserData);
 			statement.close();
 		} catch (SQLException e) {
@@ -107,6 +107,22 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 		return password;
+	}
+	
+	public String isAdmin(String user) {
+		String admin = "";
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT ADMIN FROM LOGIN WHERE USERNAME = '" + user + "'");
+			resultSet.next();
+			admin = resultSet.getString("ADMIN");
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return admin;
 	}
 	
 	public ArrayList<Integer> getProducts(String category) {
