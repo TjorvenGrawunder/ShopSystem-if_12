@@ -3,6 +3,7 @@
 <?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -72,6 +73,11 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
+                <ImageView fitHeight="369.0" fitWidth="656.0" layoutX="-119.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../../ressources/Fortnite.png" />
+                  </image>
+                </ImageView>
                 <Label layoutX="14.0" layoutY="14.0" text="Name:" />
                 <Label id="usernameLabel" layoutX="49.0" layoutY="14.0" text="" />
               </children>

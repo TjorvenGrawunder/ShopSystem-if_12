@@ -3,6 +3,7 @@
 <?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -15,7 +16,12 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Label layoutX="15.0" layoutY="23.0" text="Kategorie:" />
+                <ImageView fitHeight="384.0" fitWidth="512.0" layoutX="0.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../../ressources/sonnenuntergaenge-2.png" />
+                  </image>
+                </ImageView>
+                <Label layoutX="15.0" layoutY="23.0" text="Kategorie:" textFill="WHITE" />
                 <ComboBox layoutX="76.0" layoutY="24.0" prefHeight="21.0" prefWidth="174.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
