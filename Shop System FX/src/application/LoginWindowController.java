@@ -22,12 +22,9 @@ public class LoginWindowController implements Initializable {
 	SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
 
 	// Views
-	@FXML
-	private TextField username;
-	@FXML
-	private PasswordField password;
-	@FXML
-	private AnchorPane loginPane;
+	@FXML private TextField username;
+	@FXML private PasswordField password;
+	@FXML private AnchorPane loginPane;
 	private String user;
 	private String passw;
 	public Main main;

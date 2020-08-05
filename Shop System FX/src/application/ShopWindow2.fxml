@@ -86,18 +86,10 @@
                 <Label layoutX="14.0" layoutY="14.0" text="Produktname:" />
                 <Label layoutX="14.0" layoutY="55.0" text="Preis:" />
                 <Label layoutX="14.0" layoutY="94.0" text="Kategorie:" />
-                <TextField id="productName" layoutX="96.0" layoutY="14.0" prefWidth="200.0" />
-                <TextField id="price" layoutX="96.0" layoutY="55.0" prefWidth="200.0" />
-                <ComboBox id="category" layoutX="96.0" layoutY="92.0" prefHeight="21.0" prefWidth="200.0">
-                  <items>
-                    <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="T-Shirts" />
-                      <String fx:value="Pullover" />
-                      <String fx:value="Sonstiges" />
-                    </FXCollections>
-                  </items>
-                </ComboBox>
-                <Button layoutX="155.0" layoutY="138.0" mnemonicParsing="false" text="Hinzufügen" />
+                <TextField fx:id="productNameField" layoutX="96.0" layoutY="14.0" prefWidth="200.0" />
+                <TextField fx:id="priceField" layoutX="96.0" layoutY="55.0" prefWidth="200.0" />
+                <TextField fx:id="categoryField" layoutX="96.0" layoutY="91.0" prefWidth="200.0" />
+                <Button layoutX="214.0" layoutY="134.0" mnemonicParsing="false" onAction="#addProductButtonClick" text="Hinzufügen" />
               </children>
             </AnchorPane>
           </content>
