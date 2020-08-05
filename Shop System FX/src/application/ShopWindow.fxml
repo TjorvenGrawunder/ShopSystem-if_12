@@ -36,11 +36,11 @@
                 <RadioButton layoutX="342.0" layoutY="78.0" mnemonicParsing="false" text="Kinder" toggleGroup="$ToggleGroup" />
                 <ScrollBar layoutX="238.0" layoutY="86.0" orientation="VERTICAL" prefHeight="222.0" />
                 <TextArea id="ProductTextField" editable="false" layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0" wrapText="true" />
-                <TextField layoutX="446.0" layoutY="286.0" prefWidth="40.0" />
+                <TextField fx:id="productIdShoppingCart" layoutX="446.0" layoutY="286.0" prefWidth="40.0" />
                 <Label layoutX="356.0" layoutY="286.0" prefHeight="19.0001220703125" text="Bestellnummer:" />
-                <Button layoutX="317.0" layoutY="322.0" mnemonicParsing="false" text="Zum Warenkorb hinzufügen" />
+                <Button layoutX="317.0" layoutY="322.0" mnemonicParsing="false" onAction="#addToShoppingCartButtonClick" text="Zum Warenkorb hinzufügen" />
                 <Label layoutX="14.0" layoutY="63.0" text="Produkte:" />
-                <ComboBox layoutX="342.0" layoutY="127.0">
+                <ComboBox fx:id="sizeCombobox" editable="false" layoutX="342.0" layoutY="127.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="XL" />
