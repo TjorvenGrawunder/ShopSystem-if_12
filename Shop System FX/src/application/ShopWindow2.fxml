@@ -86,9 +86,18 @@
                 <Label layoutX="14.0" layoutY="14.0" text="Produktname:" />
                 <Label layoutX="14.0" layoutY="55.0" text="Preis:" />
                 <Label layoutX="14.0" layoutY="94.0" text="Kategorie:" />
-                <TextField layoutX="96.0" layoutY="14.0" prefWidth="200.0" />
-                <TextField layoutX="96.0" layoutY="55.0" prefWidth="200.0" />
-                <TextField layoutX="96.0" layoutY="91.0" prefWidth="200.0" />
+                <TextField id="productName" layoutX="96.0" layoutY="14.0" prefWidth="200.0" />
+                <TextField id="price" layoutX="96.0" layoutY="55.0" prefWidth="200.0" />
+                <ComboBox id="category" layoutX="96.0" layoutY="92.0" prefHeight="21.0" prefWidth="200.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="T-Shirts" />
+                      <String fx:value="Pullover" />
+                      <String fx:value="Sonstiges" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Button layoutX="155.0" layoutY="138.0" mnemonicParsing="false" text="Hinzufügen" />
               </children>
             </AnchorPane>
           </content>
