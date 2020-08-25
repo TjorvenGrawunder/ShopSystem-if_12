@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
@@ -7,60 +9,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="shopPane" prefHeight="400.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.ShopWindowController">
-  <!-- TODO Add Nodes -->
-  <children>
-    <TabPane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
-      <tabs>
-        <Tab text="Bestellung">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              <children>
-                <ImageView fitHeight="384.0" fitWidth="512.0" layoutX="0.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../../ressources/sonnenuntergaenge-2.png" />
-                  </image>
-                </ImageView>
-                <Label layoutX="15.0" layoutY="23.0" text="Kategorie:" textFill="WHITE" />
-                <ComboBox layoutX="76.0" layoutY="24.0" prefHeight="21.0" prefWidth="174.0">
-                  <items>
-                    <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="T-Shirts" />
-                      <String fx:value="Pullover" />
-                      <String fx:value="Sonstiges" />
-                    </FXCollections>
-                  </items>
-                </ComboBox>
-                <VBox id="ToggleGroup" layoutX="322.0" layoutY="14.0" prefHeight="95.0" prefWidth="100.0" />
-                <TableView layoutX="44.0" layoutY="65.0" prefHeight="268.0" prefWidth="405.0">
-                  <columns>
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="226.0" text="Bild" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="177.0" text="Name" />
-                  </columns>
-                </TableView>
-              </children>
-            </AnchorPane>
-          </content>
-        </Tab>
-        <Tab text="Warenkorb">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              <children>
-                <Label layoutX="14.0" layoutY="34.0" text="Bestellliste:" />
-                <TextArea layoutX="14.0" layoutY="50.0" prefHeight="268.0" prefWidth="200.0" wrapText="true" />
-                <ScrollBar layoutX="214.0" layoutY="50.0" orientation="VERTICAL" prefHeight="268.0" />
-                <Button layoutX="170.0" layoutY="318.0" mnemonicParsing="false" text="Kaufen" />
-                <Label layoutX="16.0" layoutY="318.0" text="Preis: 20€" />
-              </children>
-            </AnchorPane>
-          </content>
-        </Tab>
-        <Tab text="Account">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-          </content>
-        </Tab>
-      </tabs>
-    </TabPane>
-  </children>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="-7.0" layoutY="-7.0" prefHeight="415.0" prefWidth="132.0" style="-fx-background-color: #1759a6;">
+         <children>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="132.0" text="Bestellung">
+               <font>
+                  <Font name="MS Outlook" size="12.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="loginPane" prefHeight="435.0" prefWidth="774.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginWindowController">
+  <!-- TODO Add Nodes -->
+  <children>
+      <AnchorPane layoutX="439.0" layoutY="54.0" prefHeight="327.0" prefWidth="283.0" style="-fx-background-color: #1759A6;">
+         <children>
+            <JFXButton layoutX="37.0" layoutY="212.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #6490C3;" text="Einloggen" textFill="WHITE" />
+            <Label layoutX="102.0" layoutY="33.0" text="Anmelden" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="37.0" layoutY="257.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #6490C3;" text="Registrieren" textFill="WHITE" />
+            <JFXPasswordField focusColor="#14317c" layoutX="37.0" layoutY="151.0" prefHeight="25.0" prefWidth="210.0" promptText="Passwort" style="-fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE" />
+            <JFXTextField focusColor="#14317c" layoutX="37.0" layoutY="105.0" prefHeight="25.0" prefWidth="210.0" promptText="Benutzername" style="-fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE" />
+         </children>
+      </AnchorPane>
+    <Button fx:id="register" layoutX="130.0" layoutY="238.0" mnemonicParsing="false" onAction="#registerButtonClick" prefWidth="71.0" text="Register" />
+    <Label layoutX="439.0" layoutY="382.0" text="*sponsored by Baranator">
+      <font>
+        <Font size="6.0" />
+      </font>
+    </Label>
+      <ImageView fitHeight="435.0" fitWidth="384.0" layoutX="-3.0">
+         <image>
+            <Image url="@../../ressources/Schulgelände.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="289.0" layoutX="45.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../ressources/logo%20123.JPG" />
+         </image>
+      </ImageView>
+      <Pane layoutX="45.0" layoutY="204.0" prefHeight="71.0" prefWidth="289.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Pane layoutX="6.0" layoutY="6.0" prefHeight="58.0" prefWidth="277.0" style="-fx-background-color: #1759A6;">
+               <children>
+                  <JFXTextField editable="false" focusColor="#ffffff00" layoutX="37.0" layoutY="-21.0" prefHeight="71.0" prefWidth="203.0" promptText="Willkommen " style="-fx-prompt-text-fill: #ffffff;" unFocusColor="#ffffff00">
+                     <font>
+                        <Font name="Segoe Script" size="28.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </Pane>
+            <JFXTextField editable="false" focusColor="#7d95db00" layoutX="36.0" layoutY="32.0" prefHeight="25.0" prefWidth="217.0" promptText="im Merchendise-Shop des AMG" style="-fx-prompt-text-fill: #ffffff;" unFocusColor="#ffffff00">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
+  </children>
+</AnchorPane>
