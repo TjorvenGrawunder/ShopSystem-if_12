@@ -28,7 +28,7 @@ public class Main extends Application {
 	
 	public void loginWindow() {
 		try {
-			
+			//was geht
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("LoginWindowTest.fxml"));
 			AnchorPane pane = loader.load();
 			primaryStage.setMinHeight(400.00);
