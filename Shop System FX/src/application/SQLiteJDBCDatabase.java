@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SQLiteJDBCDatabase {
 	private final String databaseName;
@@ -107,6 +108,28 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 		return password;
+	}
+	
+	public ArrayList<Produkt> getProductIDNameandPrice(String category) {
+		ArrayList<Produkt> productList = new ArrayList();
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT PRODUCTID, PRODUCTNAME, PRICE FROM PRODUCTS WHERE CATEGORY = '" + category + "'");
+			while(resultSet.next()) {
+				Produkt product = new Produkt();
+				product.setId(resultSet.getInt(1));
+				product .setProductName(resultSet.getString(2));
+				product.setPrice(resultSet.getInt(3));
+				productList.add(product);
+			}
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return productList;
+		
 	}
 	
 	public String isAdmin(String user) {
