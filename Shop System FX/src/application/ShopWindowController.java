@@ -22,6 +22,9 @@ public class ShopWindowController implements Initializable {
 	private TextField productIdShoppingCart;
 	@FXML
 	private ComboBox<String> sizeCombobox;
+	@FXML
+	private ComboBox<String> categoryCombobox;
+	
 	public ArrayList<WarenkorbElement> shoppingCartList = new ArrayList();
 	
 	
@@ -37,5 +40,20 @@ public class ShopWindowController implements Initializable {
 	public void addToShoppingCartButtonClick(ActionEvent event) throws IOException {
 		WarenkorbElement element = new WarenkorbElement(Integer.parseInt(productIdShoppingCart.getText()), sizeCombobox.getValue());
 		shoppingCartList.add(element);
+	}
+	
+	public void searchButtonClick(ActionEvent event) throws IOException {
+		String category;
+		SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
+		category = categoryCombobox.getValue();
+		ArrayList<Produkt> productList = new ArrayList();
+		productList = sqlDatabase.getProductIDNameandPrice(category);
+		for(int i = 0; i<productList.size(); i++) {
+			Produkt product;
+			product = productList.get(i);
+			int id = product.getId();
+			String productName = product.getProductName();
+			int price = product.getPrice();
+		}
 	}
 }

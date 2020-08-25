@@ -17,7 +17,7 @@
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
                 <Label layoutX="15.0" layoutY="23.0" text="Kategorie:" />
-                <ComboBox layoutX="76.0" layoutY="24.0" prefHeight="21.0" prefWidth="174.0">
+                <ComboBox fx:id="categoryCombobox" layoutX="76.0" layoutY="24.0" prefHeight="21.0" prefWidth="174.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="T-Shirts" />
@@ -35,7 +35,7 @@
                 <RadioButton layoutX="342.0" layoutY="55.0" mnemonicParsing="false" selected="false" text="Frauen" toggleGroup="$ToggleGroup" />
                 <RadioButton layoutX="342.0" layoutY="78.0" mnemonicParsing="false" text="Kinder" toggleGroup="$ToggleGroup" />
                 <ScrollBar layoutX="238.0" layoutY="86.0" orientation="VERTICAL" prefHeight="222.0" />
-                <TextArea id="ProductTextField" editable="false" layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0" wrapText="true" />
+                <TextArea id="ProductTextField" disable="false" editable="false" layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0" wrapText="true" />
                 <TextField fx:id="productIdShoppingCart" layoutX="446.0" layoutY="286.0" prefWidth="40.0" />
                 <Label layoutX="356.0" layoutY="286.0" prefHeight="19.0001220703125" text="Bestellnummer:" />
                 <Button layoutX="317.0" layoutY="322.0" mnemonicParsing="false" onAction="#addToShoppingCartButtonClick" text="Zum Warenkorb hinzufügen" />
@@ -52,6 +52,7 @@
                   </items>
                 </ComboBox>
                 <Label layoutX="300.0" layoutY="130.0" text="Größe:" />
+                <Button layoutX="76.0" layoutY="51.0" mnemonicParsing="false" onAction="#searchButtonClick" text="Suchen" />
               </children>
             </AnchorPane>
           </content>
