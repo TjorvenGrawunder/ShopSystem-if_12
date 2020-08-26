@@ -5,13 +5,18 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class ShopWindowController implements Initializable {
@@ -24,6 +29,14 @@ public class ShopWindowController implements Initializable {
 	private ComboBox<String> sizeCombobox;
 	@FXML
 	private ComboBox<String> categoryCombobox;
+	@FXML
+	private TableView<Produkt> produkte;
+	@FXML
+	private TableColumn<Produkt, String> colProduktname;
+	@FXML
+	private TableColumn<Produkt, Integer> colId;
+	@FXML
+	private TableColumn<Produkt, Integer> colPreis;
 	
 	public ArrayList<WarenkorbElement> shoppingCartList = new ArrayList();
 	
@@ -46,14 +59,11 @@ public class ShopWindowController implements Initializable {
 		String category;
 		SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
 		category = categoryCombobox.getValue();
-		ArrayList<Produkt> productList = new ArrayList();
+		ObservableList<Produkt> productList = FXCollections.observableArrayList();
 		productList = sqlDatabase.getProductIDNameandPrice(category);
-		for(int i = 0; i<productList.size(); i++) {
-			Produkt product;
-			product = productList.get(i);
-			int id = product.getId();
-			String productName = product.getProductName();
-			int price = product.getPrice();
-		}
+		colId.setCellValueFactory(new PropertyValueFactory<Produkt, Integer>("id"));
+		colProduktname.setCellValueFactory(new PropertyValueFactory<Produkt, String>("productName"));
+		colPreis.setCellValueFactory(new PropertyValueFactory<Produkt, Integer>("price"));
+		produkte.setItems(productList);
 	}
 }

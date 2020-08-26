@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class SQLiteJDBCDatabase {
 	private final String databaseName;
 	private Connection connection;
@@ -110,8 +113,8 @@ public class SQLiteJDBCDatabase {
 		return password;
 	}
 	
-	public ArrayList<Produkt> getProductIDNameandPrice(String category) {
-		ArrayList<Produkt> productList = new ArrayList();
+	public ObservableList<Produkt> getProductIDNameandPrice(String category) {
+		ObservableList<Produkt> productList = FXCollections.observableArrayList();
 		Statement statement = null;
 		try {
 			statement = getConnection().createStatement();

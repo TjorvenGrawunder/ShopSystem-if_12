@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="shopPane" prefHeight="400.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.ShopWindowController">
+<AnchorPane fx:id="shopPane" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ShopWindowController">
   <!-- TODO Add Nodes -->
   <children>
     <TabPane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
@@ -35,7 +47,6 @@
                 <RadioButton layoutX="342.0" layoutY="55.0" mnemonicParsing="false" selected="false" text="Frauen" toggleGroup="$ToggleGroup" />
                 <RadioButton layoutX="342.0" layoutY="78.0" mnemonicParsing="false" text="Kinder" toggleGroup="$ToggleGroup" />
                 <ScrollBar layoutX="238.0" layoutY="86.0" orientation="VERTICAL" prefHeight="222.0" />
-                <TextArea id="ProductTextField" disable="false" editable="false" layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0" wrapText="true" />
                 <TextField fx:id="productIdShoppingCart" layoutX="446.0" layoutY="286.0" prefWidth="40.0" />
                 <Label layoutX="356.0" layoutY="286.0" prefHeight="19.0001220703125" text="Bestellnummer:" />
                 <Button layoutX="317.0" layoutY="322.0" mnemonicParsing="false" onAction="#addToShoppingCartButtonClick" text="Zum Warenkorb hinzufügen" />
@@ -53,6 +64,13 @@
                 </ComboBox>
                 <Label layoutX="300.0" layoutY="130.0" text="Größe:" />
                 <Button layoutX="76.0" layoutY="51.0" mnemonicParsing="false" onAction="#searchButtonClick" text="Suchen" />
+                        <TableView layoutX="38.0" layoutY="86.0" prefHeight="222.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="colProduktname" prefWidth="93.0" text="Produktname" />
+                            <TableColumn fx:id="colPreis" minWidth="0.0" prefWidth="74.0" text="Preis" />
+                              <TableColumn fx:id="colId" prefWidth="31.0" text="Nr." />
+                          </columns>
+                        </TableView>
               </children>
             </AnchorPane>
           </content>
