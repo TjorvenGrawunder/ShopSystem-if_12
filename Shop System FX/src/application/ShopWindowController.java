@@ -33,7 +33,7 @@ public class ShopWindowController implements Initializable {
 	}
 	
 	public void logoutButtonClick(ActionEvent event) throws IOException {
-		AnchorPane loginPane = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+		AnchorPane loginPane = FXMLLoader.load(getClass().getResource("LoginWindowTest.fxml"));
 		shopPane.getChildren().setAll(loginPane);
 	}
 	

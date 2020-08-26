@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -23,8 +24,11 @@
                </font>
             </Label>
             <JFXButton layoutX="37.0" layoutY="257.0" onAction="#registerButtonClick" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #6490C3;" text="Registrieren" textFill="WHITE" />
-            <JFXPasswordField fx:id="password" focusColor="#14317c" layoutX="37.0" layoutY="151.0" prefHeight="25.0" prefWidth="210.0" promptText="Passwort" style="-fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE" />
-            <JFXTextField fx:id="username" focusColor="#14317c" layoutX="37.0" layoutY="105.0" prefHeight="25.0" prefWidth="210.0" promptText="Benutzername" style="-fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE" />
+            <JFXPasswordField fx:id="password" focusColor="#14317c" layoutX="37.0" layoutY="151.0" prefHeight="25.0" prefWidth="210.0" promptText="Passwort" style="-fx-prompt-text-fill: #ffffff; -fx-text-inner-color: #ffffff;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="username" focusColor="#14317c" layoutX="37.0" layoutY="105.0" prefHeight="25.0" prefWidth="210.0" promptText="Benutzername" style="-fx-prompt-text-fill: #ffffff; -fx-text-inner-color: #ffffff;" unFocusColor="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></JFXTextField>
          </children>
       </AnchorPane>
     <Button fx:id="register" layoutX="130.0" layoutY="238.0" mnemonicParsing="false" onAction="#registerButtonClick" prefWidth="71.0" text="Register" />
