@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -9,23 +10,70 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="774.0" stylesheets="@swt.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="-7.0" layoutY="-7.0" prefHeight="415.0" prefWidth="132.0" style="-fx-background-color: #1759a6;">
-         <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="132.0" text="Bestellung">
-               <font>
-                  <Font name="MS Outlook" size="12.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Button>
-         </children>
-      </VBox>
+      <JFXTabPane prefHeight="435.0" prefWidth="916.0">
+         <tabs>
+            <Tab text="Untitled Tab                      ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab style="-fx-background-color: #1759A6;" text="          Bestellung          ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <JFXTabPane fx:id="Tab2" prefHeight="375.0" prefWidth="916.0">
+                           <tabs>
+                              <Tab style="-fx-background-color: #3682da;" text="     Pullover     ">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #3682da;" text="     T-Shirt     ">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #3682da;" text="     Jacke     ">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #3682da;" text="     Caps     ">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #3682da;" text="     Accessoires     ">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </JFXTabPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab style="-fx-background-color: #1759A6;" text="          Warenkorb          ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab style="-fx-background-color: #1759A6;" text="           Account            ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+         </tabs>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXTabPane>
+      <ImageView fitHeight="60.0" fitWidth="211.0">
+         <image>
+            <Image url="@../../ressources/logo%20123.JPG" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
