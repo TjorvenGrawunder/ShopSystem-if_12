@@ -25,6 +25,10 @@ import javafx.scene.layout.Pane;
 public class ShopWindowController implements Initializable {
 	
 	@FXML
+	private Pane pnl_Ph;
+	@FXML
+	private JFXButton btn_Ph;
+	@FXML
 	private Pane pnl_BE,pnl_WA,pnl_PR;
 	@FXML
 	private JFXButton btn_BE,btn_WA,btn_PR;
@@ -83,8 +87,13 @@ public class ShopWindowController implements Initializable {
 			}else {
 				if(event.getSource() == btn_PR) {
 					pnl_PR.toFront();
+				}else {
+					if(event.getSource() == btn_Ph) {
+						pnl_Ph.toFront();
+					}
 				}
 			}
 		}
 	}
 }
+

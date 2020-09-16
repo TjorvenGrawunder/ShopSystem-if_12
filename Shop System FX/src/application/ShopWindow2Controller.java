@@ -6,9 +6,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import com.jfoenix.controls.JFXButton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +25,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 	
 
 	SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
+	
 	
 	@FXML
 	private TextField productNameField;

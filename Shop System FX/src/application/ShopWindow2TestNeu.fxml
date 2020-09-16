@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="shopPane" prefHeight="435.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ShopWindow2Controller">
+   <children>
+      <AnchorPane prefHeight="435.0" prefWidth="217.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <JFXButton fx:id="btn_BE" layoutY="66.0" onAction="#sidebarButtonClick" prefHeight="65.0" prefWidth="217.0" text="Bestellungen" />
+            <AnchorPane prefHeight="435.0" prefWidth="45.0" style="-fx-background-color: #1759A6;" />
+            <JFXButton fx:id="btn_WA" layoutY="134.0" onAction="#sidebarButtonClick" prefHeight="65.0" prefWidth="217.0" text="Warenkorb" />
+            <JFXButton fx:id="btn_PR" layoutY="199.0" onAction="#sidebarButtonClick" prefHeight="65.0" prefWidth="217.0" text="Profil" />
+            <ImageView fitHeight="65.0" fitWidth="221.0" layoutX="-4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ressources/logo%20123.JPG" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btn_Ph" layoutX="-1.0" layoutY="264.0" onAction="#sidebarButtonClick" prefHeight="65.0" prefWidth="217.0" text="       Produkt hinzufügen" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="217.0" prefHeight="416.0" prefWidth="557.0">
+         <children>
+            <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="349.0" layoutY="381.0" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #1759A6;" text="Zum Warenkorb hinzufügen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children></Pane>
+            <Pane fx:id="pnl_Ph" prefHeight="435.0" prefWidth="557.0">
+               <children>
+                  <JFXTextField editable="false" layoutX="67.0" layoutY="36.0" prefHeight="25.0" prefWidth="81.0" text="Produktname:" unFocusColor="#1759a6" />
+                  <JFXTextField editable="false" layoutX="67.0" layoutY="89.0" prefHeight="25.0" prefWidth="81.0" text="Preis:" unFocusColor="#1759a6" />
+                  <JFXTextField editable="false" layoutX="67.0" layoutY="143.0" prefHeight="25.0" prefWidth="81.0" text="Kategorie:" unFocusColor="#1759a6" />
+                  <JFXTextField layoutX="187.0" layoutY="36.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
+                  <JFXTextField layoutX="187.0" layoutY="89.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
+                  <JFXTextField layoutX="187.0" layoutY="143.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
+                  <JFXButton layoutX="408.0" layoutY="205.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #1759A6;" text="Hinzufügen" />
+               </children>
+            </Pane>
+            <Pane prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -46,11 +46,11 @@ public class LoginWindowController implements Initializable {
 		String admin = sqlDatabase.isAdmin(user);
 		if (nextWindow == true) {
 			if(admin.equals("TRUE")) {
-			AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindowTestNeu.fxml"));
+			AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindow2TestNeu.fxml"));
 			loginPane.getChildren().setAll(shopPane);
 			}
 			else{
-				AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindow.fxml"));
+				AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindowTestNeu.fxml"));
 				loginPane.getChildren().setAll(shopPane);
 			}
 		} else {
