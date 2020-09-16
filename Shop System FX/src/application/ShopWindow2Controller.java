@@ -87,7 +87,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 			}
 		});
 		JFXTreeTableColumn<Produkt, String> jfxProductIDColumn = new JFXTreeTableColumn<>("Bestellnummer");
-		jfxProductIDColumn.setPrefWidth(100);
+		jfxProductIDColumn.setPrefWidth(98);
 		jfxProductIDColumn.setResizable(false);
 		jfxProductIDColumn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
 			
