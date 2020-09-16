@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableColumn;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,12 +21,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
+
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;;
 
 public class ShopWindowController implements Initializable {
 	
+	//Overlay Items
 	@FXML
 	private Pane pnl_Ph;
 	@FXML
@@ -39,21 +51,57 @@ public class ShopWindowController implements Initializable {
 	@FXML
 	private ComboBox<String> sizeCombobox;
 	@FXML
-	private ComboBox<String> categoryCombobox;
+	private JFXComboBox<String> categoryCombobox;
 	@FXML
-	private TableView<Produkt> produkte;
-	@FXML
-	private TableColumn<Produkt, String> colProduktname;
-	@FXML
-	private TableColumn<Produkt, Integer> colId;
-	@FXML
-	private TableColumn<Produkt, Integer> colPreis;
+	private JFXTreeTableView<Produkt> treeOrderView;
 	
+	//Warenkorb Array
 	public ArrayList<WarenkorbElement> shoppingCartList = new ArrayList();
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//Kategorie Combobox befüllen
+		categoryCombobox.getItems().add("T-Shirt");
+		categoryCombobox.getItems().add("Pullover");
+		categoryCombobox.getItems().add("Sonstiges");
+		
+		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
+		jfxProductNameColumn.setPrefWidth(110);
+		jfxProductNameColumn.setResizable(false);
+		jfxProductNameColumn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getProductName();
+			}
+		});
+		
+		JFXTreeTableColumn<Produkt, String> jfxProductPriceColumn = new JFXTreeTableColumn<>("Produktname");
+		jfxProductPriceColumn.setResizable(false);
+		jfxProductPriceColumn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getPrice();
+			}
+		});
+		JFXTreeTableColumn<Produkt, String> jfxProductIDColumn = new JFXTreeTableColumn<>("Produktname");
+		jfxProductIDColumn.setPrefWidth(100);
+		jfxProductIDColumn.setResizable(false);
+		jfxProductIDColumn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getId();
+			}
+		});
+		treeOrderView.getColumns().setAll(jfxProductNameColumn,jfxProductPriceColumn, jfxProductIDColumn);
+		
+
 	}
 	
 	public void logoutButtonClick(ActionEvent event) throws IOException {
@@ -70,12 +118,11 @@ public class ShopWindowController implements Initializable {
 		String category;
 		SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
 		category = categoryCombobox.getValue();
-		ObservableList<Produkt> productList = FXCollections.observableArrayList();
-		productList = sqlDatabase.getProductIDNameandPrice(category);
-		colId.setCellValueFactory(new PropertyValueFactory<Produkt, Integer>("id"));
-		colProduktname.setCellValueFactory(new PropertyValueFactory<Produkt, String>("productName"));
-		colPreis.setCellValueFactory(new PropertyValueFactory<Produkt, Integer>("price"));
-		produkte.setItems(productList);
+
+		ObservableList<Produkt> productObservableList = sqlDatabase.getProductIDNameandPrice(category);
+		final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(productObservableList,RecursiveTreeObject::getChildren);
+		treeOrderView.setRoot(root);
+		treeOrderView.setShowRoot(false);
 	}
 	//Durch Ancklicken der Knöpfe der Sidebar schiebt sich das jeweilige Pane nach vorne 
 	public void sidebarButtonClick(ActionEvent event) {

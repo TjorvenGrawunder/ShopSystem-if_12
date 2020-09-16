@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,15 +37,6 @@
                   </JFXButton>
                </children>
             </Pane>
-            <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <JFXButton layoutX="349.0" layoutY="381.0" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #1759A6;" text="Zum Warenkorb hinzufügen">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </Pane>
             <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
@@ -52,18 +45,32 @@
                      </font>
                   </JFXButton>
                </children></Pane>
-            <Pane fx:id="pnl_Ph" prefHeight="435.0" prefWidth="557.0">
+            <Pane fx:id="pnl_Ph" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXTextField editable="false" layoutX="67.0" layoutY="36.0" prefHeight="25.0" prefWidth="81.0" text="Produktname:" unFocusColor="#1759a6" />
                   <JFXTextField editable="false" layoutX="67.0" layoutY="89.0" prefHeight="25.0" prefWidth="81.0" text="Preis:" unFocusColor="#1759a6" />
                   <JFXTextField editable="false" layoutX="67.0" layoutY="143.0" prefHeight="25.0" prefWidth="81.0" text="Kategorie:" unFocusColor="#1759a6" />
-                  <JFXTextField layoutX="187.0" layoutY="36.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
-                  <JFXTextField layoutX="187.0" layoutY="89.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
-                  <JFXTextField layoutX="187.0" layoutY="143.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
-                  <JFXButton layoutX="408.0" layoutY="205.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #1759A6;" text="Hinzufügen" />
+                  <JFXTextField fx:id="productNameField" layoutX="187.0" layoutY="36.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
+                  <JFXTextField fx:id="priceField" layoutX="187.0" layoutY="89.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
+                  <JFXTextField fx:id="categoryField" layoutX="187.0" layoutY="143.0" prefHeight="25.0" prefWidth="221.0" unFocusColor="#1759a6" />
+                  <JFXButton layoutX="408.0" layoutY="205.0" onAction="#addProductButtonClick" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #1759A6;" text="Hinzufügen" />
                </children>
             </Pane>
             <Pane prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
+            <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="349.0" layoutY="381.0" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #6490C3;" text="Zum Warenkorb hinzufügen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTreeTableView fx:id="treeOrderView" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
+                  <JFXComboBox fx:id="categoryCombobox2" layoutX="375.0" layoutY="75.0" prefHeight="25.0" prefWidth="145.0" promptText="Kategorie" />
+                  <JFXButton layoutX="375.0" layoutY="124.0" onAction="#searchButtonClick" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #6490C3;" text="Filtern" />
+                  <JFXTextField layoutX="304.0" layoutY="384.0" prefHeight="25.0" prefWidth="35.0" promptText="ID" />
+                  <JFXComboBox layoutX="375.0" layoutY="163.0" promptText="Größe" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

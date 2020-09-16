@@ -1,27 +1,31 @@
 package application;
 
-public class Produkt {
-	private int id;
-	private String productName;
-	private int price;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.beans.property.StringProperty;
+
+public class Produkt extends RecursiveTreeObject<Produkt>{
+	private StringProperty id;
+	private StringProperty productName;
+	private StringProperty price;
 	
 	
-	public int getId() {
+	public StringProperty getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(StringProperty id) {
 		this.id = id;
 	}
-	public String getProductName() {
+	public StringProperty getProductName() {
 		return productName;
 	}
-	public void setProductName(String productName) {
+	public void setProductName(StringProperty productName) {
 		this.productName = productName;
 	}
-	public int getPrice() {
+	public StringProperty getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(StringProperty price) {
 		this.price = price;
 	}
 }

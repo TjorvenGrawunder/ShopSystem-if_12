@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -121,9 +122,9 @@ public class SQLiteJDBCDatabase {
 			ResultSet resultSet = statement.executeQuery("SELECT PRODUCTID, PRODUCTNAME, PRICE FROM PRODUCTS WHERE CATEGORY = '" + category + "'");
 			while(resultSet.next()) {
 				Produkt product = new Produkt();
-				product.setId(resultSet.getInt(1));
-				product .setProductName(resultSet.getString(2));
-				product.setPrice(resultSet.getInt(3));
+				product.setId(new SimpleStringProperty(Integer.toString(resultSet.getInt(1))));
+				product .setProductName(new SimpleStringProperty(resultSet.getString(2)));
+				product.setPrice(new SimpleStringProperty(Integer.toString(resultSet.getInt(3))));
 				productList.add(product);
 			}
 			resultSet.close();
