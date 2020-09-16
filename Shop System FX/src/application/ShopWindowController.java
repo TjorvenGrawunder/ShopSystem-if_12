@@ -13,25 +13,28 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class ShopWindowController implements Initializable {
 	
+	SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
+	
 	@FXML
-	private Pane pnl_Ph;
+	private PasswordField passwordNew,passwordNewSafe;
 	@FXML
-	private JFXButton btn_Ph;
+	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern;
 	@FXML
-	private Pane pnl_BE,pnl_WA,pnl_PR;
-	@FXML
-	private JFXButton btn_BE,btn_WA,btn_PR;
+	private JFXButton btn_BE,btn_WA,btn_PR,btn_Ph,btn_PWaendern, btn_PWgeaendert;
 	@FXML
 	private AnchorPane shopPane;
 	@FXML
@@ -94,6 +97,34 @@ public class ShopWindowController implements Initializable {
 				}
 			}
 		}
+	}
+	public void passwortAendernMenuButtonClick(ActionEvent event) {
+			pnl_PWaendern.toFront();
+		
+	}
+	public void passwortAendernButtonClick(ActionEvent event) {
+		LoginWindowController loginWindow = LoginWindowController.getInstance();
+		String user = loginWindow.getUser();
+		String passwortNeu = passwordNew.getText();
+		String passwortbestaetigt = passwordNewSafe.getText();
+		if(passwortNeu.equals(passwortbestaetigt)) {
+			passwortNeu = passwortNeu + "7453";
+			sqlDatabase.changePassword(user, passwortNeu.hashCode());
+			Alert passwordchanged = new Alert(AlertType.INFORMATION);
+			passwordchanged.setTitle("Info");
+			passwordchanged.setHeaderText(null);
+			String info = "Passwort wurde erfolgreich geändert!";
+			passwordchanged.setContentText(info);
+			passwordchanged.showAndWait();
+		}else {
+			Alert wrongpassword = new Alert(AlertType.WARNING);
+			wrongpassword.setTitle("");
+			wrongpassword.setHeaderText(null);
+			String error = "Passwörter stimmen nicht überein!";
+			wrongpassword.setContentText(error);
+			wrongpassword.showAndWait();
+		}
+		
 	}
 }
 

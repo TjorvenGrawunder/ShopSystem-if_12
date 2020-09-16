@@ -82,6 +82,18 @@ public class SQLiteJDBCDatabase {
 		}
 	}
 	
+	public void changePassword(String username, int passw) {
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			String sqlUserData = "UPDATE LOGIN SET PASSWORD = "+ passw + "WHERE USERNAME = "+ username;
+			statement.execute(sqlUserData);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void addProducts(String productname, int price, String category) {
 		Statement statement = null;
 		try {

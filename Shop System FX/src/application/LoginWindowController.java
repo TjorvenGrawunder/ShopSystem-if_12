@@ -20,7 +20,8 @@ import javafx.scene.layout.AnchorPane;
 public class LoginWindowController implements Initializable {
 
 	SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
-
+	//Instanz
+	private static LoginWindowController instance;
 	// Views
 	@FXML private TextField username;
 	@FXML private PasswordField password;
@@ -77,10 +78,16 @@ public class LoginWindowController implements Initializable {
 		return correctPassword;
 
 	}
+	public static LoginWindowController getInstance() {
+		return instance; 
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+	}
+	public String getUser() {
+		return user;
 	}
 	
 }
