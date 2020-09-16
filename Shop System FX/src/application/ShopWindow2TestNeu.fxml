@@ -48,7 +48,6 @@
                   <JFXButton layoutX="408.0" layoutY="205.0" onAction="#addProductButtonClick" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #1759A6;" text="Hinzufügen" />
                </children>
             </Pane>
-            <Pane prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
             <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton layoutX="349.0" layoutY="381.0" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #6490C3;" text="Zum Warenkorb hinzufügen">
@@ -77,8 +76,9 @@
                <children>
                   <JFXPasswordField fx:id="passwordNew" alignment="CENTER" focusColor="#1759a6" layoutX="175.0" layoutY="149.0" prefHeight="25.0" prefWidth="207.0" promptText="Neues Passwort" unFocusColor="#1759a6" />
                   <JFXPasswordField fx:id="passwordNewSafe" alignment="CENTER" focusColor="#1759a6" layoutX="175.0" layoutY="218.0" prefHeight="25.0" prefWidth="207.0" promptText="Passwort bestätigen" unFocusColor="#1759a6" />
-                  <JFXButton fx:id="btn_PWgeaendert" layoutX="382.0" layoutY="360.0" onAction="#passwortAendernButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort äendern"  />
+                  <JFXButton fx:id="btn_PWgeaendert" layoutX="382.0" layoutY="360.0" onAction="#passwortAendernButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort äendern" />
                </children></Pane>
+            <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
          </children>
       </AnchorPane>
    </children>

@@ -44,7 +44,7 @@ public class ShopWindowController implements Initializable {
 	@FXML
 	private PasswordField passwordNew,passwordNewSafe;
 	@FXML
-	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern;
+	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern,pnl_front;
 	@FXML
 	private JFXButton btn_BE,btn_WA,btn_PR,btn_Ph,btn_PWaendern, btn_PWgeaendert;
 	@FXML
@@ -162,6 +162,9 @@ public class ShopWindowController implements Initializable {
 			String info = "Passwort wurde erfolgreich geändert!";
 			passwordchanged.setContentText(info);
 			passwordchanged.showAndWait();
+			passwordNew.setText(null);
+			passwordNewSafe.setText(null);
+			pnl_PR.toFront();
 		}else {
 			Alert wrongpassword = new Alert(AlertType.WARNING);
 			wrongpassword.setTitle("");
