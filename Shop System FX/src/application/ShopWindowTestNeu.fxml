@@ -2,9 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import com.jfoenix.controls.JFXPasswordField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -37,14 +37,6 @@
                   </JFXButton>
                </children>
             </Pane>
-            <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-               </children></Pane>
             <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
@@ -76,6 +68,17 @@
                   <JFXTextField layoutX="304.0" layoutY="384.0" prefHeight="25.0" prefWidth="35.0" promptText="ID" />
                </children>
             </Pane>
+            <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTreeTableView layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
+                  <JFXButton layoutX="50.0" layoutY="381.0" prefHeight="25.0" prefWidth="134.0" text="Warenkorb anzeigen!" />
+                  <JFXButton layoutX="313.0" layoutY="381.0" text="Warnkorb löschen!" />
+               </children></Pane>
          </children>
       </AnchorPane>
    </children>

@@ -150,8 +150,7 @@ public class ShopWindowController implements Initializable {
 		
 	}
 	public void passwortAendernButtonClick(ActionEvent event) {
-		LoginWindowController loginWindow = LoginWindowController.getInstance();
-		String user = loginWindow.getUser();
+		String user = State.getInstance().getUser();
 		String passwortNeu = passwordNew.getText();
 		String passwortbestaetigt = passwordNewSafe.getText();
 		if(passwortNeu.equals(passwortbestaetigt)) {

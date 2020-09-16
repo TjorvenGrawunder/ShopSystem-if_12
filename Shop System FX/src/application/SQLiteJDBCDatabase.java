@@ -87,7 +87,7 @@ public class SQLiteJDBCDatabase {
 		Statement statement = null;
 		try {
 			statement = getConnection().createStatement();
-			String sqlUserData = "UPDATE LOGIN SET PASSWORD = "+ passw + "WHERE USERNAME = "+ username;
+			String sqlUserData = "UPDATE LOGIN SET PASSWORD = "+ passw + " WHERE USERNAME = '"+ username +"'";
 			statement.execute(sqlUserData);
 			statement.close();
 		} catch (SQLException e) {

@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.image.Image?>
@@ -28,16 +29,6 @@
       </AnchorPane>
       <AnchorPane layoutX="217.0" prefHeight="416.0" prefWidth="557.0">
          <children>
-            <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="btn_PWaendern" layoutX="380.0" layoutY="243.0" onAction="#passwortAendernButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort ändern" />
-               </children>
-            </Pane>
             <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
@@ -57,7 +48,6 @@
                   <JFXButton layoutX="408.0" layoutY="205.0" onAction="#addProductButtonClick" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #1759A6;" text="Hinzufügen" />
                </children>
             </Pane>
-            <Pane fx:id="pnl_PWaendern" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
             <Pane prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
             <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
@@ -73,6 +63,22 @@
                   <JFXComboBox layoutX="375.0" layoutY="163.0" promptText="Größe" />
                </children>
             </Pane>
+            <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btn_PWaendern" layoutX="380.0" layoutY="243.0" onAction="#passwortAendernMenuButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort ändern" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_PWaendern" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXPasswordField fx:id="passwordNew" alignment="CENTER" focusColor="#1759a6" layoutX="175.0" layoutY="149.0" prefHeight="25.0" prefWidth="207.0" promptText="Neues Passwort" unFocusColor="#1759a6" />
+                  <JFXPasswordField fx:id="passwordNewSafe" alignment="CENTER" focusColor="#1759a6" layoutX="175.0" layoutY="218.0" prefHeight="25.0" prefWidth="207.0" promptText="Passwort bestätigen" unFocusColor="#1759a6" />
+                  <JFXButton fx:id="btn_PWgeaendert" layoutX="382.0" layoutY="360.0" onAction="#passwortAendernButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort äendern"  />
+               </children></Pane>
          </children>
       </AnchorPane>
    </children>
