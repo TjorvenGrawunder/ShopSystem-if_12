@@ -5,11 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -54,16 +56,22 @@ public class ShopWindow2Controller extends ShopWindowController {
 	@FXML
 	private JFXComboBox<String> categoryCombobox2;
 	@FXML
-	private JFXTreeTableView<Produkt> treeOrderView;
+	private JFXTreeTableView<Produkt> treeOrderView,treeWAview;
 	
-	public ArrayList<WarenkorbElement> shoppingCartList2 = new ArrayList();
+	public ObservableList<Produkt> shoppingCartList2 = FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//Kategorie Combobox befüllen
+		//Kategorie-Combobox befüllen
 		categoryCombobox2.getItems().add("T-Shirt");
 		categoryCombobox2.getItems().add("Pullover");
 		categoryCombobox2.getItems().add("Sonstiges");
+		//Größen-Combobox befüllen
+		sizeCombobox2.getItems().add("XS");
+		sizeCombobox2.getItems().add("S");
+		sizeCombobox2.getItems().add("M");
+		sizeCombobox2.getItems().add("L");
+		sizeCombobox2.getItems().add("XL");
 		
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
 		jfxProductNameColumn.setPrefWidth(110);
@@ -99,6 +107,40 @@ public class ShopWindow2Controller extends ShopWindowController {
 		});
 		treeOrderView.getColumns().setAll(jfxProductNameColumn,jfxProductPriceColumn, jfxProductIDColumn);
 
+		JFXTreeTableColumn<Produkt, String> warenkorbProduktNameSpalte = new JFXTreeTableColumn<>("Produktname");
+		warenkorbProduktNameSpalte.setPrefWidth(98);
+		warenkorbProduktNameSpalte.setResizable(false);
+		warenkorbProduktNameSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getProductName();
+			}
+		});
+		JFXTreeTableColumn<Produkt, String> warenkorbGroeßeSpalte = new JFXTreeTableColumn<>("Größe");
+		warenkorbGroeßeSpalte.setPrefWidth(98);
+		warenkorbGroeßeSpalte.setResizable(false);
+		warenkorbGroeßeSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getGroeße();
+			}
+		});
+		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Preis");
+		warenkorbPreisSpalte.setPrefWidth(98);
+		warenkorbPreisSpalte.setResizable(false);
+		warenkorbPreisSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getPrice();
+			}
+		});
+		treeWAview.getColumns().setAll(warenkorbProduktNameSpalte,warenkorbGroeßeSpalte,warenkorbPreisSpalte);
 		
 	}
 	
@@ -109,8 +151,21 @@ public class ShopWindow2Controller extends ShopWindowController {
 		sqlDatabase.addProducts( productname, price, category);
 	}
 	public void addToShoppingCartButtonClick2(ActionEvent event) throws IOException {
-		WarenkorbElement element = new WarenkorbElement(Integer.parseInt(productIdShoppingCart2.getText()), sizeCombobox2.getValue());
-		shoppingCartList2.add(element);
+		int id = Integer.parseInt(productIdShoppingCart2.getText());
+		String groeße = sizeCombobox2.getValue();
+		if(groeße != null) {
+			shoppingCartList2.add(sqlDatabase.getProductAndPrice(id, groeße));
+			final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList2,RecursiveTreeObject::getChildren);
+			treeWAview.setRoot(root);
+			treeWAview.setShowRoot(false);
+		}else {
+			Alert noSize = new Alert(AlertType.WARNING);
+			noSize.setTitle("Keine Größe ausgewählt");
+			noSize.setHeaderText(null);
+			String error = "Bitte wählen Sie eine Größe aus!";
+			noSize.setContentText(error);
+			noSize.showAndWait();
+		}
 	}
 	
 	public void searchButtonClick(ActionEvent event) throws IOException {
@@ -125,5 +180,3 @@ public class ShopWindow2Controller extends ShopWindowController {
 	}
 	
 }
-
-

@@ -58,7 +58,7 @@
                   </JFXTextField>
                </children>
             </Pane>
-            <JFXTextField editable="false" focusColor="#7d95db00" layoutX="36.0" layoutY="32.0" prefHeight="25.0" prefWidth="217.0" promptText="im Merchendise-Shop des AMG" style="-fx-prompt-text-fill: #ffffff;" unFocusColor="#ffffff00">
+            <JFXTextField editable="false" focusColor="#7d95db00" layoutX="36.0" layoutY="32.0" prefHeight="25.0" prefWidth="217.0" promptText="im Merchandise-Shop des AMG" style="-fx-prompt-text-fill: #ffffff;" unFocusColor="#ffffff00">
                <font>
                   <Font size="15.0" />
                </font>

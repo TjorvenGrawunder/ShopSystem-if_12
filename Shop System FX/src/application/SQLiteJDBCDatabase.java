@@ -184,6 +184,22 @@ public class SQLiteJDBCDatabase {
 		return productList;
 	}
 	
+	public Produkt getProductAndPrice(int id, String groeﬂe) {
+		Produkt elem = new Produkt();
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT PRODUCTNAME, PRICE FROM PRODUCTS WHERE PRODUCTID = "+id);
+			elem.setProductName(new SimpleStringProperty(resultSet.getString(1)));
+			elem.setPrice(new SimpleStringProperty(Integer.toString(resultSet.getInt(2))));
+			elem.setGroeﬂe(new SimpleStringProperty(groeﬂe));
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return elem;
+	}
 
 	public static synchronized SQLiteJDBCDatabase getInstance() {
 		if (SQLiteJDBCDatabase.instance == null) {
@@ -195,4 +211,5 @@ public class SQLiteJDBCDatabase {
 	public String getDatabaseName() {
 		return databaseName;
 	}
+	
 }

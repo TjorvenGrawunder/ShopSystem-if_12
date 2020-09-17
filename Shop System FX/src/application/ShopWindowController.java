@@ -58,10 +58,10 @@ public class ShopWindowController implements Initializable {
 	@FXML
 	private JFXComboBox<String> categoryCombobox;
 	@FXML
-	private JFXTreeTableView<Produkt> treeOrderView;
+	private JFXTreeTableView<Produkt> treeOrderView, treeWAview;
 	
 	//Warenkorb Array
-	public ArrayList<WarenkorbElement> shoppingCartList = new ArrayList();
+	public ObservableList<Produkt> shoppingCartList = FXCollections.observableArrayList();
 	
 	
 	@Override
@@ -70,6 +70,12 @@ public class ShopWindowController implements Initializable {
 		categoryCombobox.getItems().add("T-Shirt");
 		categoryCombobox.getItems().add("Pullover");
 		categoryCombobox.getItems().add("Sonstiges");
+		//Grˆﬂen-Combobox bef¸llen
+		sizeCombobox.getItems().add("XS");
+		sizeCombobox.getItems().add("S");
+		sizeCombobox.getItems().add("M");
+		sizeCombobox.getItems().add("L");
+		sizeCombobox.getItems().add("XL");
 		userLabel.setText(State.getInstance().getUser());
 		
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
@@ -107,7 +113,7 @@ public class ShopWindowController implements Initializable {
 		});
 		treeOrderView.getColumns().setAll(jfxProductNameColumn,jfxProductPriceColumn, jfxProductIDColumn);
 		
-		JFXTreeTableColumn<Produkt, String> warenkorbProduktNameSpalte = new JFXTreeTableColumn<>("Bestellnummer");
+		JFXTreeTableColumn<Produkt, String> warenkorbProduktNameSpalte = new JFXTreeTableColumn<>("Produktname");
 		warenkorbProduktNameSpalte.setPrefWidth(98);
 		warenkorbProduktNameSpalte.setResizable(false);
 		warenkorbProduktNameSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
@@ -118,7 +124,18 @@ public class ShopWindowController implements Initializable {
 				return param.getValue().getValue().getProductName();
 			}
 		});
-		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Bestellnummer");
+		JFXTreeTableColumn<Produkt, String> warenkorbGroeﬂeSpalte = new JFXTreeTableColumn<>("Grˆﬂe");
+		warenkorbGroeﬂeSpalte.setPrefWidth(98);
+		warenkorbGroeﬂeSpalte.setResizable(false);
+		warenkorbGroeﬂeSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getGroeﬂe();
+			}
+		});
+		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Preis");
 		warenkorbPreisSpalte.setPrefWidth(98);
 		warenkorbPreisSpalte.setResizable(false);
 		warenkorbPreisSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
@@ -129,6 +146,7 @@ public class ShopWindowController implements Initializable {
 				return param.getValue().getValue().getPrice();
 			}
 		});
+		treeWAview.getColumns().setAll(warenkorbProduktNameSpalte,warenkorbGroeﬂeSpalte,warenkorbPreisSpalte);
 
 	}
 	
@@ -138,8 +156,21 @@ public class ShopWindowController implements Initializable {
 	}
 	
 	public void addToShoppingCartButtonClick(ActionEvent event) throws IOException {
-		WarenkorbElement element = new WarenkorbElement(Integer.parseInt(productIdShoppingCart.getText()), sizeCombobox.getValue());
-		shoppingCartList.add(element);
+		int id = Integer.parseInt(productIdShoppingCart.getText());
+		String groeﬂe = sizeCombobox.getValue();
+		if(groeﬂe != null) {
+			shoppingCartList.add(sqlDatabase.getProductAndPrice(id, groeﬂe));
+			final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
+			treeWAview.setRoot(root);
+			treeWAview.setShowRoot(false);
+		}else {
+			Alert noSize = new Alert(AlertType.WARNING);
+			noSize.setTitle("Keine Grˆﬂe ausgew‰hlt");
+			noSize.setHeaderText(null);
+			String error = "Bitte w‰hlen Sie eine Grˆﬂe aus!";
+			noSize.setContentText(error);
+			noSize.showAndWait();
+		}
 	}
 	
 	public void searchButtonClick(ActionEvent event) throws IOException {
@@ -201,4 +232,3 @@ public class ShopWindowController implements Initializable {
 		
 	}
 }
-

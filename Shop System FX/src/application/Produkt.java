@@ -32,4 +32,7 @@ public class Produkt extends RecursiveTreeObject<Produkt>{
 	public StringProperty getGroeﬂe() {
 		return groeﬂe;
 	}
+	public void setGroeﬂe(StringProperty groeﬂe) {
+		this.groeﬂe = groeﬂe;
+	}
 }
