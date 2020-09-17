@@ -107,6 +107,28 @@ public class ShopWindowController implements Initializable {
 		});
 		treeOrderView.getColumns().setAll(jfxProductNameColumn,jfxProductPriceColumn, jfxProductIDColumn);
 		
+		JFXTreeTableColumn<Produkt, String> warenkorbProduktNameSpalte = new JFXTreeTableColumn<>("Bestellnummer");
+		warenkorbProduktNameSpalte.setPrefWidth(98);
+		warenkorbProduktNameSpalte.setResizable(false);
+		warenkorbProduktNameSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getProductName();
+			}
+		});
+		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Bestellnummer");
+		warenkorbPreisSpalte.setPrefWidth(98);
+		warenkorbPreisSpalte.setResizable(false);
+		warenkorbPreisSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Produkt, String> param) {
+				
+				return param.getValue().getValue().getPrice();
+			}
+		});
 
 	}
 	

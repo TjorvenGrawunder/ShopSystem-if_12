@@ -8,6 +8,7 @@ public class Produkt extends RecursiveTreeObject<Produkt>{
 	private StringProperty id;
 	private StringProperty productName;
 	private StringProperty price;
+	private StringProperty groeﬂe;
 	
 	
 	public StringProperty getId() {
@@ -27,5 +28,8 @@ public class Produkt extends RecursiveTreeObject<Produkt>{
 	}
 	public void setPrice(StringProperty price) {
 		this.price = price;
+	}
+	public StringProperty getGroeﬂe() {
+		return groeﬂe;
 	}
 }
