@@ -44,6 +44,8 @@ public class ShopWindowController implements Initializable {
 	@FXML
 	private PasswordField passwordNew,passwordNewSafe;
 	@FXML
+	private Label userLabel;
+	@FXML
 	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern,pnl_front;
 	@FXML
 	private JFXButton btn_BE,btn_WA,btn_PR,btn_Ph,btn_PWaendern, btn_PWgeaendert;
@@ -68,6 +70,7 @@ public class ShopWindowController implements Initializable {
 		categoryCombobox.getItems().add("T-Shirt");
 		categoryCombobox.getItems().add("Pullover");
 		categoryCombobox.getItems().add("Sonstiges");
+		userLabel.setText(State.getInstance().getUser());
 		
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
 		jfxProductNameColumn.setPrefWidth(110);

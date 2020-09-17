@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,16 +36,6 @@
                         <Font size="14.0" />
                      </font>
                   </JFXButton>
-               </children>
-            </Pane>
-            <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="btn_PWaendern" layoutX="380.0" layoutY="243.0" onAction="#passwortAendernMenuButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort ändern" />
                </children>
             </Pane>
             <Pane fx:id="pnl_PWaendern" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
@@ -79,6 +70,22 @@
                   <JFXButton layoutX="313.0" layoutY="381.0" text="Warnkorb löschen!" />
                </children></Pane>
             <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
+            <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btn_PWaendern" layoutX="380.0" layoutY="243.0" onAction="#passwortAendernMenuButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort ändern" />
+                  <Label layoutX="27.0" layoutY="36.0" text="Benutzername:" />
+                  <Label fx:id="userLabel" layoutX="109.0" layoutY="36.0" prefHeight="17.0" prefWidth="160.0" />
+                  <Label layoutX="27.0" layoutY="67.0" text="Berechtigung:" />
+                  <Label layoutX="109.0" layoutY="67.0" text="Benutzer" />
+                  <Label layoutX="27.0" layoutY="97.0" text="Kontostand:" />
+                  <Label fx:id="creditValueLabel" layoutX="109.0" layoutY="97.0" prefHeight="17.0" prefWidth="160.0" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>
