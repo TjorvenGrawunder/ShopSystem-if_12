@@ -60,9 +60,9 @@ public class ShopWindow2Controller extends ShopWindowController {
 		sizeCombobox2.getItems().add("M");
 		sizeCombobox2.getItems().add("L");
 		sizeCombobox2.getItems().add("XL");
-		
+		//Benutzer wird unter dem Unterreiter Profil angezeigt
 		userLabel.setText(State.getInstance().getUser());
-		
+		//TreeTable Coloumns werden sowohl für die Bestellungen, als auch für den Warenkorb erstellt
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
 		jfxProductNameColumn.setPrefWidth(110);
 		jfxProductNameColumn.setResizable(false);
@@ -134,6 +134,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 		
 	}
 	
+	//neue Produkte können vom Admin zur Datenbank in die Produkt Tabelle hinzugefügt werden. Name, Preis und Kategorie müssen zuvor angegeben werden
 	public void addProductButtonClick(ActionEvent event) throws IOException {
 		String productname = productNameField.getText();
 		String category = categoryField.getText();
@@ -149,6 +150,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 			noProduct.showAndWait();
 		}
 	}
+	//Produkte werden vom Admin aus zur Warenkorbliste hinzugefügt und in der Warenkorbtabelle angezeigt. Hierfür muss sowohl eine ID, als auch eine Größe angegeben werden
 	public void addToShoppingCartButtonClick2(ActionEvent event) throws IOException {
 		int id = 0;
 		String productIDTextField = productIdShoppingCart2.getText();
@@ -184,6 +186,8 @@ public class ShopWindow2Controller extends ShopWindowController {
 		}
 	}
 	
+	//Der Käufer bestätigt seinen Kauf. Kann nur durchgeführt werden, wenn der Warenkorb nicht leer ist und sich genug Geld auf dem Konto des Käufers befindet
+	//Der zu zahlende Betrag wird vom Konto des Käufers abgezogen
 	public void buyButtonClick(ActionEvent event) {
 		boolean isShoppingCartListEmpty = shoppingCartList2.isEmpty();
 		int price = Integer.parseInt(totalPrice.getText());
@@ -211,7 +215,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 			clearedShoppingcartempty.showAndWait();
 		}
 	}
-	
+	//Der gewählte Kategoriefilter wird benutzt um die passenden Produkte aus der Datenbank zu suchen und in der Tabelle anzuzeigen
 	public void searchButtonClick(ActionEvent event) throws IOException {
 		String category;
 		SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();

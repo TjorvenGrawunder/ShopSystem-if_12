@@ -71,9 +71,10 @@ public class ShopWindowController implements Initializable {
 		sizeCombobox.getItems().add("M");
 		sizeCombobox.getItems().add("L");
 		sizeCombobox.getItems().add("XL");
+		//Benutzer wird unter dem Unterreiter Profil angezeigt
 		userLabel.setText(State.getInstance().getUser());
 		
-		
+		//TreeTable Coloumns werden sowohl für die Bestellungen, als auch für den Warenkorb erstellt
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
 		jfxProductNameColumn.setPrefWidth(110);
 		jfxProductNameColumn.setResizable(false);
@@ -145,12 +146,12 @@ public class ShopWindowController implements Initializable {
 		treeWAview.getColumns().setAll(warenkorbProduktNameSpalte,warenkorbGroeßeSpalte,warenkorbPreisSpalte);
 
 	}
-	
+	//der User loggt sich aus und gelangt zurück zum Loginwindow
 	public void logoutButtonClick(ActionEvent event) throws IOException {
 		AnchorPane loginPane = FXMLLoader.load(getClass().getResource("LoginWindowTest.fxml"));
 		shopPane.getChildren().setAll(loginPane);
 	}
-	
+	//Der normale Benutzer fügt Produkte zu seinem persönlichen Warenkorb hinzu. Dieser besteht nur während der aktuellen Sitzung und wird in einer neuen Sitzung nicht mehr erreichbar sein
 	public void addToShoppingCartButtonClick(ActionEvent event) throws IOException {
 		int id = 0;
 		String productIDTextField = productIdShoppingCart.getText();
@@ -189,7 +190,7 @@ public class ShopWindowController implements Initializable {
 			noSize.showAndWait();
 		}
 	}
-	
+	//Der Inhalt des Warenkorbs wird gelöscht und in der Tabelle nicht mehr angezeigt
 	public void deleteShoppingCartListButtonClick(ActionEvent event) {
 		shoppingCartList.clear();
 		final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
@@ -202,7 +203,8 @@ public class ShopWindowController implements Initializable {
 		clearedShoppingcart.setContentText(info);
 		clearedShoppingcart.showAndWait();
 	}
-	
+	//Der Käufer bestätigt seinen Kauf. Kann nur durchgeführt werden, wenn der Warenkorb nicht leer ist und sich genug Geld auf dem Konto des Käufers befindet
+	//Der zu zahlende Betrag wird vom Konto des Käufers abgezogen
 	public void buyButtonClick(ActionEvent event) {
 		boolean isShoppingCartListEmpty = shoppingCartList.isEmpty();
 		int price = Integer.parseInt(totalPrice.getText());
@@ -230,7 +232,7 @@ public class ShopWindowController implements Initializable {
 			clearedShoppingcartempty.showAndWait();
 		}
 	}
-	
+	//Der gewählte Kategoriefilter wird benutzt um die passenden Produkte aus der Datenbank zu suchen und in der Tabelle anzuzeigen
 	public void searchButtonClick(ActionEvent event) throws IOException {
 		String category;
 		SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
@@ -262,9 +264,11 @@ public class ShopWindowController implements Initializable {
 			}
 		}
 	}
+	//Der Menüpunkt des Geldaufladens wird aufegrufen
 	public void codeEinloesenMenuButtonClick(ActionEvent event) {
 		pnl_geld.toFront();
 	}
+	//Es wird ein festgelegter Code eingegeben, der einem einen Betrag von 1000€ auf sein Konto überweist (Nur beispielhaft aufgrund unrealistischer Preise der Produkte)
 	public void codeEinloesenButtonClick(ActionEvent event) {
 		String temp = geldCode.getText();
 		if(temp.equals(code)) {
@@ -285,10 +289,13 @@ public class ShopWindowController implements Initializable {
 			falscherCode.showAndWait();
 		}
 	}
+	//Der Menüpunkt des Passwortänderns wird aufgerufen
 	public void passwortAendernMenuButtonClick(ActionEvent event) {
 			pnl_PWaendern.toFront();
 		
-	}//
+	}
+	//Das Passwort des aktiven Benutzers wird geändert. Hierfür müssen das neue Passwort zweimal wiederholt werden und dann wird das alte ersetzt.
+	//Das aktuelle Passwort wird nicht benötigt, da sich der Benutzer bereits angemeldet hat
 	public void passwortAendernButtonClick(ActionEvent event) {
 		String user = State.getInstance().getUser();
 		String passwortNeu = passwordNew.getText();

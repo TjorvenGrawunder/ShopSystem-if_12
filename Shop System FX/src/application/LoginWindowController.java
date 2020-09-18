@@ -43,8 +43,8 @@ public class LoginWindowController implements Initializable {
 		boolean nextWindow = checkLoginData(getUsername(), getPassword());
 		String admin = sqlDatabase.isAdmin(getUsername());
 		if (nextWindow == true) {
-			State.getInstance().setUser(getUsername());
-			if (admin.equals("TRUE")) {
+			State.getInstance().setUser(getUsername());//Username wird in aktuellem Status gespeichert
+			if (admin.equals("TRUE")) {//Es wird geprüft, ob der User Adminrechte besitzt und je nach Rang ein anderes Fenster geöffnet
 				AnchorPane shopPane = FXMLLoader.load(getClass().getResource("ShopWindow2TestNeu.fxml"));
 				loginPane.getChildren().setAll(shopPane);
 			} else {
@@ -52,6 +52,7 @@ public class LoginWindowController implements Initializable {
 				loginPane.getChildren().setAll(shopPane);
 			}
 		} else {
+			//Bei falschen Login Daten wird eine Meldung ausgegeben
 			Alert wrongLoginData = new Alert(AlertType.WARNING);
 			wrongLoginData.setTitle("Loginfehler");
 			wrongLoginData.setHeaderText(null);

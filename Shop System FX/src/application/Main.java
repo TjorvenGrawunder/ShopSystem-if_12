@@ -11,24 +11,24 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
-	
+	//aktuelle Instanz der Datenbank wird aufgerufen
 	SQLiteJDBCDatabase database = SQLiteJDBCDatabase.getInstance();
 	
 	private Stage primaryStage;
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		
+		//Tabellen der Datenbank werdewn erstellt, sofern sie nicht bereits existieren
 		database.createLoginTable();
 		database.createProductsTable();
 
-		
+		//Login Window wird gestartet
 		loginWindow();
 	}
 	
 	public void loginWindow() {
 		try {
-			//was geht
+			//Fxml Datei des Login Windows wirds gestartet und auf die aktuelle Scene gespielt
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("LoginWindowTest.fxml"));
 			AnchorPane pane = loader.load();
 			primaryStage.setMinHeight(400.00);
@@ -49,7 +49,7 @@ public class Main extends Application {
 	}
 
 	
-	
+	//Main-Methode
 	public static void main(String[] args) {
 		launch(args);
 	}

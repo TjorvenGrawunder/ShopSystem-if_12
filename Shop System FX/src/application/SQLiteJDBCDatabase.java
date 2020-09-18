@@ -88,7 +88,7 @@ public class SQLiteJDBCDatabase {
 			usernameTaken.showAndWait();
 		}
 	}
-	
+	//Passwort des Users wird geändert
 	public void changePassword(String username, int passw) {
 		Statement statement = null;
 		try {
@@ -100,7 +100,7 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 	}
-	
+	//Produkte werden zur Tabelle hinzugefügt
 	public void addProducts(String productname, int price, String category) {
 		Statement statement = null;
 		try {
@@ -116,6 +116,8 @@ public class SQLiteJDBCDatabase {
 	
 	
 	//Daten aus Tabelle ziehen
+	
+	//Passwort des Users wird gesucht und zurückgegeben
 	public int getPasswordFromUser(String user) {
 		int password = 0;
 		Statement statement = null;
@@ -132,6 +134,7 @@ public class SQLiteJDBCDatabase {
 		return password;
 	}
 	
+	//Es werden Eigenschaften von Produkten zu einer Kategorie gesucht und in als Produkte in einer Liste gespeichert und zurückgegeben
 	public ObservableList<Produkt> getProductIDNameandPrice(String category) {
 		ObservableList<Produkt> productList = FXCollections.observableArrayList();
 		Statement statement = null;
@@ -153,7 +156,7 @@ public class SQLiteJDBCDatabase {
 		return productList;
 		
 	}
-	
+	//Ein Benutzername wird darauf überprüft, ob er den Admin Rang besitzt, oder nicht
 	public String isAdmin(String user) {
 		String admin = "";
 		Statement statement = null;
@@ -169,7 +172,7 @@ public class SQLiteJDBCDatabase {
 		}
 		return admin;
 	}
-	
+	//ProduktIds werden gesucht und in einer ArrayList gespeichert
 	public ArrayList<Integer> getProducts(String category) {
 		ArrayList<Integer> productList = new ArrayList<Integer>();
 		Statement statement = null;
@@ -189,7 +192,7 @@ public class SQLiteJDBCDatabase {
 		
 		return productList;
 	}
-	
+	//Aus der Tabelle werden Produktname und Preis zu einer bestimmten Id gesucht und in einem Produktobjekt gespeichert, welches zurückgegeben wird
 	public Produkt getProductAndPrice(int id, String groeße) {
 		Produkt elem = new Produkt();
 		Statement statement = null;
@@ -206,7 +209,7 @@ public class SQLiteJDBCDatabase {
 		}
 		return elem;
 	}
-	
+	//Der Kontostand eines Users wird ausgegeben
 	public int getCreditValue(String user) {
 		int creditValue = 0;
 		Statement statement = null;
@@ -221,7 +224,7 @@ public class SQLiteJDBCDatabase {
 		}
 		return creditValue;
 	}
-	
+	//Der Kontostand eines Users wird um einen Transfer korriegiert(negativer Transfer bei eine Abbuchung und positiver Transfer bei einer Einzahlung)
 	public void changeCreditValue(String user, int creditTransfer) {
 		Statement statement = null;
 		int newCreditValue;
@@ -235,14 +238,14 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 	}
-
+	//Instanz der aktuellen Datenbank wird erstellt
 	public static synchronized SQLiteJDBCDatabase getInstance() {
 		if (SQLiteJDBCDatabase.instance == null) {
 			SQLiteJDBCDatabase.instance = new SQLiteJDBCDatabase("ShopSystem");
 		}
 		return SQLiteJDBCDatabase.instance;
 	}
-
+	//Instanz der aktuellen Datenbank wird zurückgegeben
 	public String getDatabaseName() {
 		return databaseName;
 	}

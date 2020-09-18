@@ -5,12 +5,13 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.StringProperty;
 
 public class Produkt extends RecursiveTreeObject<Produkt>{
+	//Komponenten eines Produkts
 	private StringProperty id;
 	private StringProperty productName;
 	private StringProperty price;
 	private StringProperty groeﬂe;
 	
-	
+	//Getter und Setter der einzelnen Komponenten
 	public StringProperty getId() {
 		return id;
 	}
