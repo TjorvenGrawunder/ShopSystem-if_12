@@ -49,6 +49,7 @@
                   <Label layoutX="109.0" layoutY="67.0" text="Benutzer" />
                   <Label layoutX="27.0" layoutY="97.0" text="Kontostand:" />
                   <Label fx:id="creditValueLabel3" layoutX="109.0" layoutY="97.0" prefHeight="17.0" prefWidth="160.0" />
+                  <JFXButton fx:id="btn_geldCodeMenu" layoutX="48.0" layoutY="243.0" onAction="#codeEinloesenMenuButtonClick" style="-fx-background-color: #1759A6;" text="Geld aufladen" />
                </children>
             </Pane>
             <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
@@ -83,6 +84,13 @@
                   <Label layoutX="332.0" layoutY="370.0" text="€" />
                </children></Pane>
             <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
+            <Pane fx:id="pnl_geld" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton fx:id="btn_geldAufladen" layoutX="374.0" layoutY="255.0" onAction="#codeEinloesenButtonClick" style="-fx-background-color: #1759A6;" text="Geld aufladen" />
+                  <Label layoutX="91.0" layoutY="201.0" prefHeight="17.0" prefWidth="81.0" text="Code einlösen:" />
+                  <JFXTextField fx:id="geldCode" focusColor="#1759a6" layoutX="199.0" layoutY="197.0" prefHeight="25.0" prefWidth="160.0" promptText="    XXXX-XXXX-XXXX-XXXX" style="-fx-prompt-text-fill: #aaaaaa;" unFocusColor="#1759a6" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

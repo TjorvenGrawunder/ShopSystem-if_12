@@ -33,7 +33,7 @@ import javafx.util.Callback;;
 
 public class ShopWindowController implements Initializable {
 	
-
+	String code = "HFO5-K79K-NVOE-9046";
 	SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
 	
 	@FXML
@@ -41,13 +41,13 @@ public class ShopWindowController implements Initializable {
 	@FXML
 	private Label userLabel,creditValueLabel,creditValueLabel2,creditValueLabel3,totalPrice;
 	@FXML
-	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern,pnl_front;
+	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern,pnl_front, pnl_geld;
 	@FXML
-	private JFXButton btn_BE,btn_WA,btn_PR,btn_Ph,btn_PWaendern, btn_PWgeaendert;
+	private JFXButton btn_BE,btn_WA,btn_PR,btn_Ph,btn_PWaendern, btn_PWgeaendert,btn_geldCodeMenu,btn_geldAufladen;
 	@FXML
 	private AnchorPane shopPane;
 	@FXML
-	private TextField productIdShoppingCart;
+	private TextField productIdShoppingCart,geldCode;
 	@FXML
 	private ComboBox<String> sizeCombobox;
 	@FXML
@@ -260,6 +260,29 @@ public class ShopWindowController implements Initializable {
 					}
 				}
 			}
+		}
+	}
+	public void codeEinloesenMenuButtonClick(ActionEvent event) {
+		pnl_geld.toFront();
+	}
+	public void codeEinloesenButtonClick(ActionEvent event) {
+		String temp = geldCode.getText();
+		if(temp.equals(code)) {
+			sqlDatabase.changeCreditValue(State.getInstance().getUser(), 1000);
+			geldCode.clear();
+			Alert geldaufgeladen = new Alert(AlertType.INFORMATION);
+			geldaufgeladen.setTitle("Info");
+			geldaufgeladen.setHeaderText(null);
+			String info = "Geld wurde erfolgreich transferiert!";
+			geldaufgeladen.setContentText(info);
+			geldaufgeladen.showAndWait();
+		}else {
+			Alert falscherCode = new Alert(AlertType.WARNING);
+			falscherCode.setTitle("Kein Valider Code");
+			falscherCode.setHeaderText(null);
+			String info = "Bitte versuchen Sie einen anderen Code!";
+			falscherCode.setContentText(info);
+			falscherCode.showAndWait();
 		}
 	}
 	public void passwortAendernMenuButtonClick(ActionEvent event) {
