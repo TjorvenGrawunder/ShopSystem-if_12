@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -52,6 +53,10 @@ public class ShopWindow2Controller extends ShopWindowController {
 	@FXML
 	private TextField productIdShoppingCart2;
 	@FXML
+	private Label userLabel;
+	@FXML
+	private Label creditValueLabel;
+	@FXML
 	private JFXComboBox<String> sizeCombobox2;
 	@FXML
 	private JFXComboBox<String> categoryCombobox2;
@@ -72,6 +77,9 @@ public class ShopWindow2Controller extends ShopWindowController {
 		sizeCombobox2.getItems().add("M");
 		sizeCombobox2.getItems().add("L");
 		sizeCombobox2.getItems().add("XL");
+		
+		userLabel.setText(State.getInstance().getUser());
+		creditValueLabel.setText(Integer.toString(sqlDatabase.getCreditValue(State.getInstance().getUser())));
 		
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
 		jfxProductNameColumn.setPrefWidth(110);

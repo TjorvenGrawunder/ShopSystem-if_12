@@ -46,7 +46,7 @@ public class SQLiteJDBCDatabase {
 		try {
 			statement = getConnection().createStatement();
 			String sqlCommand = "CREATE TABLE IF NOT EXISTS LOGIN " + "(USERNAME STRING PRIMARY KEY     NOT NULL,"
-					+ " PASSWORD INT    NOT NULL, ADMIN STRING NOT NULL )";
+					+ " PASSWORD INT    NOT NULL, ADMIN STRING NOT NULL, VALUE INT)";
 			statement.executeUpdate(sqlCommand);
 			statement.close();
 		} catch (SQLException e) {
@@ -199,6 +199,21 @@ public class SQLiteJDBCDatabase {
 			e.printStackTrace();
 		}
 		return elem;
+	}
+	
+	public int getCreditValue(String user) {
+		int creditValue = 0;
+		Statement statement = null;
+		try {
+			statement = getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT VALUE FROM LOGIN WHERE USERNAME = '"+ user + "'");
+			creditValue = resultSet.getInt(1);
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return creditValue;
 	}
 
 	public static synchronized SQLiteJDBCDatabase getInstance() {
