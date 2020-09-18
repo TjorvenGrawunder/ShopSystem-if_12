@@ -204,16 +204,27 @@ public class ShopWindowController implements Initializable {
 	}
 	
 	public void buyButtonClick(ActionEvent event) {
+		boolean isShoppingCartListEmpty = shoppingCartList.isEmpty();
 		shoppingCartList.clear();
 		final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
 		treeWAview.setRoot(root);
 		treeWAview.setShowRoot(false);
-		Alert clearedShoppingcart = new Alert(AlertType.INFORMATION);
-		clearedShoppingcart.setTitle("Info");
-		clearedShoppingcart.setHeaderText(null);
-		String info = "Erfolgreich eingekauft! Danke für ihre Kohle! :D";
-		clearedShoppingcart.setContentText(info);
-		clearedShoppingcart.showAndWait();
+		if(isShoppingCartListEmpty == true) {
+			
+			Alert clearedShoppingcart = new Alert(AlertType.INFORMATION);
+			clearedShoppingcart.setTitle("Info");
+			clearedShoppingcart.setHeaderText(null);
+			String info = "Erfolgreich eingekauft! Vielen Dank für ihren Einkauf";
+			clearedShoppingcart.setContentText(info);
+			clearedShoppingcart.showAndWait();
+		}else {
+			Alert clearedShoppingcartempty = new Alert(AlertType.WARNING);
+			clearedShoppingcartempty.setTitle("Leerer Warenkorb");
+			clearedShoppingcartempty.setHeaderText(null);
+			String info = "Einkauf Fehlgeschlagen! Der Warenkorb ist leer!";
+			clearedShoppingcartempty.setContentText(info);
+			clearedShoppingcartempty.showAndWait();
+		}
 	}
 	
 	public void searchButtonClick(ActionEvent event) throws IOException {
