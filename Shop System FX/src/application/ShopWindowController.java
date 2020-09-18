@@ -205,12 +205,16 @@ public class ShopWindowController implements Initializable {
 	
 	public void buyButtonClick(ActionEvent event) {
 		boolean isShoppingCartListEmpty = shoppingCartList.isEmpty();
+		int price = Integer.parseInt(totalPrice.getText());
 		shoppingCartList.clear();
 		final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
 		treeWAview.setRoot(root);
 		treeWAview.setShowRoot(false);
-		if(isShoppingCartListEmpty == true) {
-			
+		if(isShoppingCartListEmpty == false && price <= sqlDatabase.getCreditValue(State.getInstance().getUser())) {
+			int creditTransfer = price;
+			sqlDatabase.changeCreditValue(State.getInstance().getUser(), -creditTransfer);
+			creditValueLabel2.setText(Integer.toString(sqlDatabase.getCreditValue(State.getInstance().getUser())));
+			totalPrice.setText("0");
 			Alert clearedShoppingcart = new Alert(AlertType.INFORMATION);
 			clearedShoppingcart.setTitle("Info");
 			clearedShoppingcart.setHeaderText(null);
@@ -221,7 +225,7 @@ public class ShopWindowController implements Initializable {
 			Alert clearedShoppingcartempty = new Alert(AlertType.WARNING);
 			clearedShoppingcartempty.setTitle("Leerer Warenkorb");
 			clearedShoppingcartempty.setHeaderText(null);
-			String info = "Einkauf Fehlgeschlagen! Der Warenkorb ist leer!";
+			String info = "Einkauf Fehlgeschlagen! Der Warenkorb oder ihr Konto ist leer!";
 			clearedShoppingcartempty.setContentText(info);
 			clearedShoppingcartempty.showAndWait();
 		}

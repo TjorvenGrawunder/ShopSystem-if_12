@@ -221,6 +221,20 @@ public class SQLiteJDBCDatabase {
 		}
 		return creditValue;
 	}
+	
+	public void changeCreditValue(String user, int creditTransfer) {
+		Statement statement = null;
+		int newCreditValue;
+		try {
+			newCreditValue = getCreditValue(user) + creditTransfer;
+			statement = getConnection().createStatement();
+			String update = "UPDATE LOGIN SET VALUE = " + newCreditValue + " WHERE USERNAME = '"+ user + "'";
+			statement.execute(update);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static synchronized SQLiteJDBCDatabase getInstance() {
 		if (SQLiteJDBCDatabase.instance == null) {

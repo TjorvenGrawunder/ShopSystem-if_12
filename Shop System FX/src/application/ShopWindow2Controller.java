@@ -184,6 +184,34 @@ public class ShopWindow2Controller extends ShopWindowController {
 		}
 	}
 	
+	public void buyButtonClick(ActionEvent event) {
+		boolean isShoppingCartListEmpty = shoppingCartList2.isEmpty();
+		int price = Integer.parseInt(totalPrice.getText());
+		shoppingCartList2.clear();
+		final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList2,RecursiveTreeObject::getChildren);
+		treeWAview.setRoot(root);
+		treeWAview.setShowRoot(false);
+		if(isShoppingCartListEmpty == false && price <= sqlDatabase.getCreditValue(State.getInstance().getUser())) {
+			int creditTransfer = price;
+			sqlDatabase.changeCreditValue(State.getInstance().getUser(), -creditTransfer);
+			creditValueLabel2.setText(Integer.toString(sqlDatabase.getCreditValue(State.getInstance().getUser())));
+			totalPrice.setText("0");
+			Alert clearedShoppingcart = new Alert(AlertType.INFORMATION);
+			clearedShoppingcart.setTitle("Info");
+			clearedShoppingcart.setHeaderText(null);
+			String info = "Erfolgreich eingekauft! Vielen Dank für ihren Einkauf";
+			clearedShoppingcart.setContentText(info);
+			clearedShoppingcart.showAndWait();
+		}else {
+			Alert clearedShoppingcartempty = new Alert(AlertType.WARNING);
+			clearedShoppingcartempty.setTitle("Leerer Warenkorb");
+			clearedShoppingcartempty.setHeaderText(null);
+			String info = "Einkauf Fehlgeschlagen! Der Warenkorb oder ihr Konto ist leer!";
+			clearedShoppingcartempty.setContentText(info);
+			clearedShoppingcartempty.showAndWait();
+		}
+	}
+	
 	public void searchButtonClick(ActionEvent event) throws IOException {
 		String category;
 		SQLiteJDBCDatabase sqlDatabase = SQLiteJDBCDatabase.getInstance();
