@@ -45,17 +45,9 @@ public class ShopWindow2Controller extends ShopWindowController {
 	
 	
 	@FXML
-	private TextField productNameField;
+	private TextField productNameField,priceField,categoryField,productIdShoppingCart2;
 	@FXML
-	private TextField priceField;
-	@FXML
-	private TextField categoryField;
-	@FXML
-	private TextField productIdShoppingCart2;
-	@FXML
-	private Label userLabel;
-	@FXML
-	private Label creditValueLabel;
+	private Label userLabel,creditValueLabel,creditValueLabel2,creditValueLabel3;
 	@FXML
 	private JFXComboBox<String> sizeCombobox2;
 	@FXML
@@ -79,7 +71,6 @@ public class ShopWindow2Controller extends ShopWindowController {
 		sizeCombobox2.getItems().add("XL");
 		
 		userLabel.setText(State.getInstance().getUser());
-		creditValueLabel.setText(Integer.toString(sqlDatabase.getCreditValue(State.getInstance().getUser())));
 		
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
 		jfxProductNameColumn.setPrefWidth(110);

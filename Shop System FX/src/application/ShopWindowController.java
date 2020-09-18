@@ -44,7 +44,7 @@ public class ShopWindowController implements Initializable {
 	@FXML
 	private PasswordField passwordNew,passwordNewSafe;
 	@FXML
-	private Label userLabel;
+	private Label userLabel,creditValueLabel,creditValueLabel2,creditValueLabel3;
 	@FXML
 	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern,pnl_front;
 	@FXML
@@ -77,6 +77,7 @@ public class ShopWindowController implements Initializable {
 		sizeCombobox.getItems().add("L");
 		sizeCombobox.getItems().add("XL");
 		userLabel.setText(State.getInstance().getUser());
+		
 		
 		JFXTreeTableColumn<Produkt, String> jfxProductNameColumn = new JFXTreeTableColumn<>("Produktname");
 		jfxProductNameColumn.setPrefWidth(110);
@@ -156,18 +157,21 @@ public class ShopWindowController implements Initializable {
 	}
 	
 	public void addToShoppingCartButtonClick(ActionEvent event) throws IOException {
-		int id = Integer.parseInt(productIdShoppingCart.getText());
+		int id = -1;
+		if(productIdShoppingCart.getText() != null) {
+			id = Integer.parseInt(productIdShoppingCart.getText());
+		}
 		String groeße = sizeCombobox.getValue();
-		if(groeße != null) {
+		if(groeße != null && id != -1) {
 			shoppingCartList.add(sqlDatabase.getProductAndPrice(id, groeße));
 			final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
 			treeWAview.setRoot(root);
 			treeWAview.setShowRoot(false);
 		}else {
 			Alert noSize = new Alert(AlertType.WARNING);
-			noSize.setTitle("Keine Größe ausgewählt");
+			noSize.setTitle("Keine Größe oder Bestellnummer ausgewählt");
 			noSize.setHeaderText(null);
-			String error = "Bitte wählen Sie eine Größe aus!";
+			String error = "Bitte wählen Sie eine Größe oder Bestellnummer aus!";
 			noSize.setContentText(error);
 			noSize.showAndWait();
 		}
@@ -187,12 +191,15 @@ public class ShopWindowController implements Initializable {
 	public void sidebarButtonClick(ActionEvent event) {
 		if(event.getSource() == btn_BE) {
 			pnl_BE.toFront();
+			creditValueLabel.setText(Integer.toString(sqlDatabase.getCreditValue(State.getInstance().getUser())));
 		}else {
 			if(event.getSource() == btn_WA) {
 				pnl_WA.toFront();
+				creditValueLabel2.setText(Integer.toString(sqlDatabase.getCreditValue(State.getInstance().getUser())));
 			}else {
 				if(event.getSource() == btn_PR) {
 					pnl_PR.toFront();
+					creditValueLabel3.setText(Integer.toString(sqlDatabase.getCreditValue(State.getInstance().getUser())));
 				}else {
 					if(event.getSource() == btn_Ph) {
 						pnl_Ph.toFront();

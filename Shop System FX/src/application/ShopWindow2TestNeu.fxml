@@ -47,31 +47,6 @@
                   <JFXPasswordField fx:id="passwordNewSafe" alignment="CENTER" focusColor="#1759a6" layoutX="175.0" layoutY="218.0" prefHeight="25.0" prefWidth="207.0" promptText="Passwort bestätigen" unFocusColor="#1759a6" />
                   <JFXButton fx:id="btn_PWgeaendert" layoutX="382.0" layoutY="360.0" onAction="#passwortAendernButtonClick" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #1759A6;" text="Passwort äendern" />
                </children></Pane>
-            <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <JFXButton layoutX="349.0" layoutY="381.0" onAction="#addToShoppingCartButtonClick2" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #6490C3;" text="Zum Warenkorb hinzufügen">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXTreeTableView fx:id="treeOrderView" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
-                  <JFXComboBox fx:id="categoryCombobox2" layoutX="375.0" layoutY="75.0" prefHeight="25.0" prefWidth="145.0" promptText="Kategorie" />
-                  <JFXButton layoutX="375.0" layoutY="124.0" onAction="#searchButtonClick" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #6490C3;" text="Filtern" />
-                  <JFXTextField fx:id="productIdShoppingCart2" layoutX="304.0" layoutY="384.0" prefHeight="25.0" prefWidth="35.0" promptText="ID" />
-                  <JFXComboBox fx:id="sizeCombobox2" layoutX="375.0" layoutY="163.0" promptText="Größe" />
-               </children>
-            </Pane>
-           <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXTreeTableView fx:id="treeWAview" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
-                  <JFXButton layoutX="50.0" layoutY="378.0" text="Warenkorb löschen!" />
-               </children></Pane>
-            <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
             <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
@@ -85,9 +60,38 @@
                   <Label layoutX="27.0" layoutY="67.0" text="Berechtigung:" />
                   <Label layoutX="109.0" layoutY="67.0" text="Admin" />
                   <Label layoutX="27.0" layoutY="97.0" text="Kontostand:" />
-                  <Label fx:id="creditValueLabel" layoutX="109.0" layoutY="97.0" prefHeight="17.0" prefWidth="160.0" />
+                  <Label fx:id="creditValueLabel3" layoutX="109.0" layoutY="97.0" prefHeight="17.0" prefWidth="160.0" />
                </children>
             </Pane>
+           <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTreeTableView fx:id="treeWAview" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
+                  <JFXButton layoutX="50.0" layoutY="378.0" text="Warenkorb löschen!" />
+                  <Label layoutX="352.0" layoutY="42.0" prefHeight="17.0" prefWidth="64.0" text="Kontostand:" />
+                  <Label fx:id="creditValueLabel2" layoutX="431.0" layoutY="42.0" prefHeight="17.0" prefWidth="122.0" />
+               </children></Pane>
+            <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="349.0" layoutY="381.0" onAction="#addToShoppingCartButtonClick2" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #6490C3;" text="Zum Warenkorb hinzufügen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTreeTableView fx:id="treeOrderView" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
+                  <JFXComboBox fx:id="categoryCombobox2" layoutX="375.0" layoutY="75.0" prefHeight="25.0" prefWidth="145.0" promptText="Kategorie" />
+                  <JFXButton layoutX="375.0" layoutY="124.0" onAction="#searchButtonClick" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #6490C3;" text="Filtern" />
+                  <JFXTextField fx:id="productIdShoppingCart2" layoutX="304.0" layoutY="384.0" prefHeight="25.0" prefWidth="35.0" promptText="ID" />
+                  <JFXComboBox fx:id="sizeCombobox2" layoutX="375.0" layoutY="163.0" promptText="Größe" />
+                  <Label layoutX="349.0" layoutY="18.0" prefHeight="17.0" prefWidth="64.0" text="Kontostand:" />
+                  <Label fx:id="creditValueLabel" layoutX="421.0" layoutY="18.0" prefHeight="17.0" prefWidth="122.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
          </children>
       </AnchorPane>
    </children>

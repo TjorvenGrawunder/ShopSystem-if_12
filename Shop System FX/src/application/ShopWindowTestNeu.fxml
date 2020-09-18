@@ -61,6 +61,8 @@
                   <JFXButton layoutX="375.0" layoutY="124.0" onAction="#searchButtonClick" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #6490C3;" text="Filtern" />
                   <JFXTextField fx:id="productIdShoppingCart" layoutX="304.0" layoutY="384.0" prefHeight="25.0" prefWidth="35.0" promptText="ID" />
                   <JFXComboBox fx:id="sizeCombobox" layoutX="375.0" layoutY="163.0" promptText="Größe" />
+                  <Label layoutX="349.0" layoutY="18.0" prefHeight="17.0" prefWidth="64.0" text="Kontostand:" />
+                  <Label fx:id="creditValueLabel" layoutX="421.0" layoutY="18.0" prefHeight="17.0" prefWidth="122.0" />
                </children>
             </Pane>
             <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
@@ -72,8 +74,9 @@
                   </JFXButton>
                   <JFXTreeTableView fx:id="treeWAview" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
                   <JFXButton layoutX="50.0" layoutY="378.0" text="Warenkorb löschen!" />
+                  <Label layoutX="352.0" layoutY="42.0" prefHeight="17.0" prefWidth="64.0" text="Kontostand:" />
+                  <Label fx:id="creditValueLabel2" layoutX="431.0" layoutY="42.0" prefHeight="17.0" prefWidth="122.0" />
                </children></Pane>
-            <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
             <Pane fx:id="pnl_PR" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton layoutX="423.0" layoutY="375.0" onAction="#logoutButtonClick" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #1759A6;" text="Logout">
@@ -87,9 +90,10 @@
                   <Label layoutX="27.0" layoutY="67.0" text="Berechtigung:" />
                   <Label layoutX="109.0" layoutY="67.0" text="Benutzer" />
                   <Label layoutX="27.0" layoutY="97.0" text="Kontostand:" />
-                  <Label fx:id="creditValueLabel" layoutX="109.0" layoutY="97.0" prefHeight="17.0" prefWidth="160.0" />
+                  <Label fx:id="creditValueLabel3" layoutX="109.0" layoutY="97.0" prefHeight="17.0" prefWidth="160.0" />
                </children>
             </Pane>
+            <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
          </children>
       </AnchorPane>
    </children>
