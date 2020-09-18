@@ -83,7 +83,6 @@
                   <Label layoutX="225.0" layoutY="370.0" text="Gesamtpreis:" />
                   <Label layoutX="332.0" layoutY="370.0" text="€" />
                </children></Pane>
-            <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
             <Pane fx:id="pnl_geld" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton fx:id="btn_geldAufladen" layoutX="374.0" layoutY="255.0" onAction="#codeEinloesenButtonClick" style="-fx-background-color: #1759A6;" text="Geld aufladen" />
@@ -91,6 +90,14 @@
                   <JFXTextField fx:id="geldCode" focusColor="#1759a6" layoutX="199.0" layoutY="197.0" prefHeight="25.0" prefWidth="160.0" promptText="    XXXX-XXXX-XXXX-XXXX" style="-fx-prompt-text-fill: #aaaaaa;" unFocusColor="#1759a6" />
                </children>
             </Pane>
+            <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ImageView fitHeight="435.0" fitWidth="564.0" layoutX="-2.0">
+                     <image>
+                        <Image url="@../../ressources/Welcome.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
          </children>
       </AnchorPane>
    </children>

@@ -288,7 +288,7 @@ public class ShopWindowController implements Initializable {
 	public void passwortAendernMenuButtonClick(ActionEvent event) {
 			pnl_PWaendern.toFront();
 		
-	}
+	}//
 	public void passwortAendernButtonClick(ActionEvent event) {
 		String user = State.getInstance().getUser();
 		String passwortNeu = passwordNew.getText();
