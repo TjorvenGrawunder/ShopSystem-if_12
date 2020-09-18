@@ -158,7 +158,8 @@ public class ShopWindowController implements Initializable {
 	
 	public void addToShoppingCartButtonClick(ActionEvent event) throws IOException {
 		int id = -1;
-		if(productIdShoppingCart.getText() != null) {
+		String productIDTextField = productIdShoppingCart.getText();
+		if(productIDTextField != null && !productIDTextField.isEmpty()) {
 			id = Integer.parseInt(productIdShoppingCart.getText());
 		}
 		String groeﬂe = sizeCombobox.getValue();
