@@ -11,6 +11,8 @@ import java.util.HashMap;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class SQLiteJDBCDatabase {
 	private final String databaseName;
@@ -79,7 +81,12 @@ public class SQLiteJDBCDatabase {
 			statement.execute(sqlUserData);
 			statement.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Alert usernameTaken = new Alert(AlertType.WARNING);
+			usernameTaken.setTitle("Benutzername bereits vergeben");
+			usernameTaken.setHeaderText(null);
+			String error = "Bitte wählen Sie einen anderen Benutzernamen!";
+			usernameTaken.setContentText(error);
+			usernameTaken.showAndWait();
 		}
 	}
 	

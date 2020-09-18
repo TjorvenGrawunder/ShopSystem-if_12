@@ -145,23 +145,42 @@ public class ShopWindow2Controller extends ShopWindowController {
 	
 	public void addProductButtonClick(ActionEvent event) throws IOException {
 		String productname = productNameField.getText();
-		int price = Integer.parseInt(priceField.getText());
 		String category = categoryField.getText();
-		sqlDatabase.addProducts( productname, price, category);
+		if(priceField.getText() != null && !priceField.getText().isEmpty() && category != null && !category.isEmpty() && productname != null && !productname.isEmpty() ) {
+			int price = Integer.parseInt(priceField.getText());
+			sqlDatabase.addProducts( productname, price, category);
+		}else {
+			Alert noProduct = new Alert(AlertType.WARNING);
+			noProduct.setTitle("Nicht ausreichend Produktdaten angegeben");
+			noProduct.setHeaderText(null);
+			String error = "Bitte geben Sie alle notwendigen Produktdaten an!";
+			noProduct.setContentText(error);
+			noProduct.showAndWait();
+		}
 	}
 	public void addToShoppingCartButtonClick2(ActionEvent event) throws IOException {
-		int id = Integer.parseInt(productIdShoppingCart2.getText());
+		int id = 0;
+		String productIDTextField = productIdShoppingCart2.getText();
+		if(productIDTextField != null && !productIDTextField.isEmpty()) {
+			id = Integer.parseInt(productIdShoppingCart2.getText());
+		}
 		String groeße = sizeCombobox2.getValue();
-		if(groeße != null) {
+		if(groeße != null && id != 0) {
 			shoppingCartList2.add(sqlDatabase.getProductAndPrice(id, groeße));
 			final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList2,RecursiveTreeObject::getChildren);
 			treeWAview.setRoot(root);
 			treeWAview.setShowRoot(false);
+			Alert addedToShoppingcart = new Alert(AlertType.INFORMATION);
+			addedToShoppingcart.setTitle("Info");
+			addedToShoppingcart.setHeaderText(null);
+			String info = "Ihre Auswahl wurde zum Warenkorb hinzugefügt!";
+			addedToShoppingcart.setContentText(info);
+			addedToShoppingcart.showAndWait();
 		}else {
 			Alert noSize = new Alert(AlertType.WARNING);
-			noSize.setTitle("Keine Größe ausgewählt");
+			noSize.setTitle("Keine Größe oder Bestellnummer ausgewählt");
 			noSize.setHeaderText(null);
-			String error = "Bitte wählen Sie eine Größe aus!";
+			String error = "Bitte wählen Sie eine Größe oder Bestellnummer aus!";
 			noSize.setContentText(error);
 			noSize.showAndWait();
 		}

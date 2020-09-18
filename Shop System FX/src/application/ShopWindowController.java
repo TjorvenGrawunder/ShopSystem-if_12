@@ -157,17 +157,23 @@ public class ShopWindowController implements Initializable {
 	}
 	
 	public void addToShoppingCartButtonClick(ActionEvent event) throws IOException {
-		int id = -1;
+		int id = 0;
 		String productIDTextField = productIdShoppingCart.getText();
 		if(productIDTextField != null && !productIDTextField.isEmpty()) {
 			id = Integer.parseInt(productIdShoppingCart.getText());
 		}
 		String groeﬂe = sizeCombobox.getValue();
-		if(groeﬂe != null && id != -1) {
+		if(groeﬂe != null && !groeﬂe.isEmpty() && id != 0) {
 			shoppingCartList.add(sqlDatabase.getProductAndPrice(id, groeﬂe));
 			final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
 			treeWAview.setRoot(root);
 			treeWAview.setShowRoot(false);
+			Alert addedToShoppingcart = new Alert(AlertType.INFORMATION);
+			addedToShoppingcart.setTitle("Info");
+			addedToShoppingcart.setHeaderText(null);
+			String info = "Ihre Auswahl wurde zum Warenkorb hinzugef¸gt!";
+			addedToShoppingcart.setContentText(info);
+			addedToShoppingcart.showAndWait();
 		}else {
 			Alert noSize = new Alert(AlertType.WARNING);
 			noSize.setTitle("Keine Grˆﬂe oder Bestellnummer ausgew‰hlt");
@@ -217,7 +223,7 @@ public class ShopWindowController implements Initializable {
 		String user = State.getInstance().getUser();
 		String passwortNeu = passwordNew.getText();
 		String passwortbestaetigt = passwordNewSafe.getText();
-		if(passwortNeu.equals(passwortbestaetigt)) {
+		if(passwortNeu.equals(passwortbestaetigt) && !passwortNeu.isEmpty()) {
 			passwortNeu = passwortNeu + "7453";
 			sqlDatabase.changePassword(user, passwortNeu.hashCode());
 			Alert passwordchanged = new Alert(AlertType.INFORMATION);
