@@ -1,37 +1,28 @@
 package application;
 
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TreeTableColumn.CellDataFeatures;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.util.Callback;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
+import javafx.util.Callback;
 
 /*
  * Controller f¸r das ShopWindow der User mit Admin-Rechten.
@@ -47,7 +38,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 	@FXML
 	private TextField productNameField,priceField,categoryField,productIdShoppingCart2;
 	@FXML
-	private Label userLabel,creditValueLabel,creditValueLabel2,creditValueLabel3;
+	private Label userLabel,creditValueLabel,creditValueLabel2,creditValueLabel3,totalPrice;
 	@FXML
 	private JFXComboBox<String> sizeCombobox2;
 	@FXML
@@ -83,7 +74,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 			}
 		});
 		
-		JFXTreeTableColumn<Produkt, String> jfxProductPriceColumn = new JFXTreeTableColumn<>("Preis (in Ä)");
+		JFXTreeTableColumn<Produkt, String> jfxProductPriceColumn = new JFXTreeTableColumn<>("Preis in Ä");
 		jfxProductPriceColumn.setResizable(false);
 		jfxProductPriceColumn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
 			
@@ -128,7 +119,7 @@ public class ShopWindow2Controller extends ShopWindowController {
 				return param.getValue().getValue().getGroeﬂe();
 			}
 		});
-		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Preis");
+		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Preis in Ä");
 		warenkorbPreisSpalte.setPrefWidth(98);
 		warenkorbPreisSpalte.setResizable(false);
 		warenkorbPreisSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
@@ -165,11 +156,18 @@ public class ShopWindow2Controller extends ShopWindowController {
 			id = Integer.parseInt(productIdShoppingCart2.getText());
 		}
 		String groeﬂe = sizeCombobox2.getValue();
-		if(groeﬂe != null && id != 0) {
+		if(groeﬂe != null && !groeﬂe.isEmpty() && id != 0) {
+			Produkt produkt = new Produkt();
+			produkt = sqlDatabase.getProductAndPrice(id, groeﬂe);
+			int price = Integer.parseInt(produkt.getPrice().get());
 			shoppingCartList2.add(sqlDatabase.getProductAndPrice(id, groeﬂe));
 			final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList2,RecursiveTreeObject::getChildren);
 			treeWAview.setRoot(root);
 			treeWAview.setShowRoot(false);
+			int currentPrice = Integer.parseInt(totalPrice.getText());
+			int nextPrice = currentPrice + price;
+			String priceString = Integer.toString(nextPrice);
+			totalPrice.setText(priceString);
 			Alert addedToShoppingcart = new Alert(AlertType.INFORMATION);
 			addedToShoppingcart.setTitle("Info");
 			addedToShoppingcart.setHeaderText(null);

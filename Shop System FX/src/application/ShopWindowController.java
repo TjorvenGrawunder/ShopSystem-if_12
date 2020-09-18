@@ -2,12 +2,14 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -17,24 +19,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableColumn.CellDataFeatures;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.util.Callback;
-
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;;
+import javafx.util.Callback;;
 
 public class ShopWindowController implements Initializable {
 	
@@ -44,7 +39,7 @@ public class ShopWindowController implements Initializable {
 	@FXML
 	private PasswordField passwordNew,passwordNewSafe;
 	@FXML
-	private Label userLabel,creditValueLabel,creditValueLabel2,creditValueLabel3;
+	private Label userLabel,creditValueLabel,creditValueLabel2,creditValueLabel3,totalPrice;
 	@FXML
 	private Pane pnl_BE,pnl_WA,pnl_PR,pnl_Ph,pnl_PWaendern,pnl_front;
 	@FXML
@@ -91,7 +86,7 @@ public class ShopWindowController implements Initializable {
 			}
 		});
 		
-		JFXTreeTableColumn<Produkt, String> jfxProductPriceColumn = new JFXTreeTableColumn<>("Preis");
+		JFXTreeTableColumn<Produkt, String> jfxProductPriceColumn = new JFXTreeTableColumn<>("Preis in Ä");
 		jfxProductPriceColumn.setResizable(false);
 		jfxProductPriceColumn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
 			
@@ -136,7 +131,7 @@ public class ShopWindowController implements Initializable {
 				return param.getValue().getValue().getGroeﬂe();
 			}
 		});
-		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Preis");
+		JFXTreeTableColumn<Produkt, String> warenkorbPreisSpalte = new JFXTreeTableColumn<>("Preis in Ä");
 		warenkorbPreisSpalte.setPrefWidth(98);
 		warenkorbPreisSpalte.setResizable(false);
 		warenkorbPreisSpalte.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Produkt,String>, ObservableValue<String>>() {
@@ -164,10 +159,21 @@ public class ShopWindowController implements Initializable {
 		}
 		String groeﬂe = sizeCombobox.getValue();
 		if(groeﬂe != null && !groeﬂe.isEmpty() && id != 0) {
-			shoppingCartList.add(sqlDatabase.getProductAndPrice(id, groeﬂe));
+			Produkt produkt = new Produkt();
+			produkt = sqlDatabase.getProductAndPrice(id, groeﬂe);
+			int price = Integer.parseInt(produkt.getPrice().get());
+			shoppingCartList.add(produkt);
 			final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
 			treeWAview.setRoot(root);
 			treeWAview.setShowRoot(false);
+			if(totalPrice.getText() != null && !totalPrice.getText().isEmpty()) {
+				int currentPrice = Integer.parseInt(totalPrice.getText());
+				int nextPrice = currentPrice + price;
+				String priceString = Integer.toString(nextPrice);
+				totalPrice.setText(priceString);
+			}else {
+				totalPrice.setText(Integer.toString(price));
+			}
 			Alert addedToShoppingcart = new Alert(AlertType.INFORMATION);
 			addedToShoppingcart.setTitle("Info");
 			addedToShoppingcart.setHeaderText(null);
@@ -182,6 +188,32 @@ public class ShopWindowController implements Initializable {
 			noSize.setContentText(error);
 			noSize.showAndWait();
 		}
+	}
+	
+	public void deleteShoppingCartListButtonClick(ActionEvent event) {
+		shoppingCartList.clear();
+		final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
+		treeWAview.setRoot(root);
+		treeWAview.setShowRoot(false);
+		Alert clearedShoppingcart = new Alert(AlertType.INFORMATION);
+		clearedShoppingcart.setTitle("Info");
+		clearedShoppingcart.setHeaderText(null);
+		String info = "Erfolgreich den Warenkorb geleert!";
+		clearedShoppingcart.setContentText(info);
+		clearedShoppingcart.showAndWait();
+	}
+	
+	public void buyButtonClick(ActionEvent event) {
+		shoppingCartList.clear();
+		final TreeItem<Produkt> root = new RecursiveTreeItem<Produkt>(shoppingCartList,RecursiveTreeObject::getChildren);
+		treeWAview.setRoot(root);
+		treeWAview.setShowRoot(false);
+		Alert clearedShoppingcart = new Alert(AlertType.INFORMATION);
+		clearedShoppingcart.setTitle("Info");
+		clearedShoppingcart.setHeaderText(null);
+		String info = "Erfolgreich eingekauft! Danke f¸r ihre Kohle! :D";
+		clearedShoppingcart.setContentText(info);
+		clearedShoppingcart.showAndWait();
 	}
 	
 	public void searchButtonClick(ActionEvent event) throws IOException {

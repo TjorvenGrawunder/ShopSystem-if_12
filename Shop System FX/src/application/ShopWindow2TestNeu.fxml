@@ -63,18 +63,6 @@
                   <Label fx:id="creditValueLabel3" layoutX="109.0" layoutY="97.0" prefHeight="17.0" prefWidth="160.0" />
                </children>
             </Pane>
-           <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <JFXButton layoutX="445.0" layoutY="378.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXTreeTableView fx:id="treeWAview" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
-                  <JFXButton layoutX="50.0" layoutY="378.0" text="Warenkorb löschen!" />
-                  <Label layoutX="352.0" layoutY="42.0" prefHeight="17.0" prefWidth="64.0" text="Kontostand:" />
-                  <Label fx:id="creditValueLabel2" layoutX="431.0" layoutY="42.0" prefHeight="17.0" prefWidth="122.0" />
-               </children></Pane>
             <Pane fx:id="pnl_BE" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
                <children>
                   <JFXButton layoutX="349.0" layoutY="381.0" onAction="#addToShoppingCartButtonClick2" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: #6490C3;" text="Zum Warenkorb hinzufügen">
@@ -91,6 +79,21 @@
                   <Label fx:id="creditValueLabel" layoutX="421.0" layoutY="18.0" prefHeight="17.0" prefWidth="122.0" />
                </children>
             </Pane>
+           <Pane fx:id="pnl_WA" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXButton layoutX="445.0" layoutY="378.0" onAction="#buyButtonClick" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1759A6;" text="Kaufen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTreeTableView fx:id="treeWAview" layoutX="50.0" layoutY="18.0" prefHeight="340.0" prefWidth="289.0" />
+                  <JFXButton layoutX="50.0" layoutY="378.0" onAction="#deleteShoppingCartListButtonClick" text="Warenkorb löschen!" />
+                  <Label layoutX="352.0" layoutY="42.0" prefHeight="17.0" prefWidth="64.0" text="Kontostand:" />
+                  <Label fx:id="creditValueLabel2" layoutX="431.0" layoutY="42.0" prefHeight="17.0" prefWidth="122.0" />
+                  <Label layoutX="222.0" layoutY="370.0" text="Gesamtpreis:" />
+                  <Label fx:id="totalPrice" layoutX="291.0" layoutY="370.0" prefHeight="17.0" prefWidth="45.0" text="0" />
+                  <Label layoutX="336.0" layoutY="370.0" text="€" />
+               </children></Pane>
             <Pane fx:id="pnl_front" prefHeight="435.0" prefWidth="557.0" style="-fx-background-color: #ffffff;" />
          </children>
       </AnchorPane>
