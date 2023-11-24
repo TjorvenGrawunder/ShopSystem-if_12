@@ -44,7 +44,7 @@
       </ImageView>
       <ImageView fitHeight="95.0" fitWidth="289.0" layoutX="45.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../ressources/logo%20123.JPG" />
+            <Image url="@../../ressources/logo123.JPG" />
          </image>
       </ImageView>
       <Pane layoutX="45.0" layoutY="204.0" prefHeight="71.0" prefWidth="289.0" style="-fx-background-color: #ffffff;">
